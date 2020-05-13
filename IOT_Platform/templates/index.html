@@ -1,0 +1,108 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Smart IOT Platform</title>
+<!--
+
+Template 2097 Pop
+
+https://www.tooplate.com/view/2097-pop
+
+-->
+    <!-- load CSS -->
+    <link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300' %}">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">                                  <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome-all.min.css' %}">                <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" type="{% static 'text/css" href="slick/slick.css' %}"/>                       <!-- http://kenwheeler.github.io/slick/ -->
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">                               <!-- Templatemo style -->
+
+    <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");</script>
+    
+</head>
+
+<body>
+    <div id="tm-bg"></div>
+    <div id="tm-wrap">
+		<img src= "{{baseUrl}}/pop-bg.jpg">
+        <div class="tm-main-content">
+            <div class="container tm-site-header-container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-md-col-xl-6 mb-md-0 mb-sm-4 mb-4 tm-site-header-col">
+                        <div class="tm-site-header">
+                            <h1 class="mb-4">A Serverless IOT Platform</h1>
+                            <img src="{{baseUrl}}/underline.png" class="img-fluid mb-4">
+                            <p>A server-less IoT solution development and management platform offers core functionality for managing
+								the entire lifecycle of IoT solution development.</p>        
+                        </div>                        
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="content">
+                            <div class="grid">
+                                <div class="grid__item" id="home-link">
+                                    <div class="product">
+                                        <div class="tm-nav-link">
+                                            <i class="fas fa-home fa-3x tm-nav-icon"></i>
+                                            <span class="tm-nav-text">Welcome</span>
+                                            <div class="product__bg"></div>        
+                                        </div>                                    
+                                    </div>
+                                </div>
+
+                                <div class="grid__item" id="team-link">
+                                    <div class="product">
+                                        <div class="tm-nav-link">
+											<a href= 'login'>
+                                            <i class="fas fa-users fa-3x tm-nav-icon"></i>
+                                            <span class="tm-nav-text">Login</span>
+											<div class="product__bg"></div> 
+										</a>           
+                                        </div>                                     
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="grid__item">
+                                    <div class="product">
+                                        <div class="tm-nav-link">
+											<a href= 'register'>
+                                            <i class="fas fa-handshake fa-3x tm-nav-icon"></i>
+                                            <span class="tm-nav-text">Register</span>
+											<div class="product__bg"></div>    
+										</a>         
+                                        </div>                                                                 
+                                              
+                                    </div>
+                                </div>
+
+                                <div class="grid__item">
+                                    <div class="product">
+                                        <div class="tm-nav-link">
+                                            <i class="fas fa-comments fa-3x tm-nav-icon"></i>
+                                            <span class="tm-nav-text">Contact</span>
+                                            <div class="product__bg"></div>             
+                                        </div>                                                              
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>                       
+                    </div>
+                </div>                
+            </div>
+            
+        </div> <!-- .tm-main-content -->  
+    </div>
+    <!-- load JS -->
+    <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>         <!-- https://jquery.com/ -->    
+    <script src="{% static 'slick/slick.min.js' %}"></script>                  <!-- http://kenwheeler.github.io/slick/ -->  
+    <script src="{% static 'js/anime.min.js' %}"></script>                     <!-- http://animejs.com/ -->
+    <script src="{% static 'js/main.js' %}"></script>  
+               
+
+</body>
+</html>

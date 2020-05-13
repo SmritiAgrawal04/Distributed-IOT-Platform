@@ -1,0 +1,187 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Register</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="{% static 'text/html; charset=UTF-8' %}"/>
+    <meta name="description" content="{% static 'Slide Down Box Menu with jQuery and CSS3' %}" />
+    <meta name="keywords" content="{% static 'jquery, css3, sliding, box, menu, cube, navigation, portfolio, thumbnails' %}"/>
+    <link rel="shortcut icon" href="{% static '../favicon.ico' %}" type="image/x-icon"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="screen"/>
+    <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");</script>
+    
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-43">
+						Register to continue
+					</span>
+
+					<ul id="sdt_menu" class="sdt_menu">
+						<li>
+							<a href="#">
+								<img src="{{baseUrl}}/iot2.gif" alt=""/>
+								<span class="sdt_active"></span>
+								<span class="sdt_wrap">
+									<span class="sdt_link">Designation</span>
+									<span class="sdt_descr">Let us get to know you</span>
+								</span>
+							</a>
+							<div class="sdt_box">
+									<a href="register_app">App Developer</a>
+									<a href="#">App User</a>
+							</div>
+						</li>
+					</ul>
+					<br><br>
+					<div>
+						<span class="reference">
+							<a href="{% static 'http://tympanus.net/codrops/2010/07/16/slide-down-box-menu/' %}"></a>
+							<a href="{% static 'http://www.flickr.com/photos/arcticpuppy/sets/72157622090180990/' %}"></a>
+						</span>
+					</div>
+					<br> <br>
+					<div class="wrap-input100 validate-input" data-validate = "Valid username is required: example">
+						<input class="input100" type="text" name="username">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Username</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Email</span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="pass">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Password</span>
+					</div>
+			
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Register
+						</button>
+					</div>
+
+				</form>
+
+				<div class="login100-more">
+					<img src= "{{baseUrl}}/bg.jpg" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+
+	<script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+	<script type="text/javascript" src="{% static 'jquery.easing.1.3.js' %}"></script>
+	<script type="text/javascript">
+		$(function() {
+			/**
+			* for each menu element, on mouseenter, 
+			* we enlarge the image, and show both sdt_active span and 
+			* sdt_wrap span. If the element has a sub menu (sdt_box),
+			* then we slide it - if the element is the last one in the menu
+			* we slide it to the left, otherwise to the right
+			*/
+			$('#sdt_menu > li').bind('mouseenter',function(){
+				var $elem = $(this);
+				$elem.find('img')
+					 .stop(true)
+					 .animate({
+						'width':'170px',
+						'height':'170px',
+						'left':'0px'
+					 },400,'easeOutBack')
+					 .andSelf()
+					 .find('.sdt_wrap')
+					 .stop(true)
+					 .animate({'top':'140px'},500,'easeOutBack')
+					 .andSelf()
+					 .find('.sdt_active')
+					 .stop(true)
+					 .animate({'height':'170px'},300,function(){
+					var $sub_menu = $elem.find('.sdt_box');
+					if($sub_menu.length){
+						var left = '170px';
+						if($elem.parent().children().length == $elem.index()+1)
+							left = '-170px';
+						$sub_menu.show().animate({'left':left},200);
+					}	
+				});
+			}).bind('mouseleave',function(){
+				var $elem = $(this);
+				var $sub_menu = $elem.find('.sdt_box');
+				if($sub_menu.length)
+					$sub_menu.hide().css('left','0px');
+				
+				$elem.find('.sdt_active')
+					 .stop(true)
+					 .animate({'height':'0px'},300)
+					 .andSelf().find('img')
+					 .stop(true)
+					 .animate({
+						'width':'0px',
+						'height':'0px',
+						'left':'85px'},400)
+					 .andSelf()
+					 .find('.sdt_wrap')
+					 .stop(true)
+					 .animate({'top':'25px'},500);
+			});
+		});
+	</script>
+
+</body>
+</html>
