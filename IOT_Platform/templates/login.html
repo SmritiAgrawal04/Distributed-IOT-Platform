@@ -41,52 +41,44 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="login" method="POST">
+					{% csrf_token %}
+
+					<div>
+						{% for message in messages %}
+						<h3><center><font color= "red", size= '2'> {{message}} </font></center> </h3>
+						<br>
+						{% endfor %}
+					</div>
+
 					<span class="login100-form-title p-b-43">
 						Login to continue
 					</span>
 
-					<ul id="sdt_menu" class="sdt_menu">
-						<li>
-							<a href="#">
-								<img src="{{baseUrl}}/iot2.gif" alt=""/>
-								<span class="sdt_active"></span>
-								<span class="sdt_wrap">
-									<span class="sdt_link">Designation</span>
-									<span class="sdt_descr">Let us get to know you</span>
-								</span>
-							</a>
-							<div class="sdt_box">
-									<a href="#">App Developer</a>
-									<a href="#">App User</a>
-							</div>
-						</li>
-					</ul>
-					<br><br>
+					
 					<div>
 						<span class="reference">
 							<a href="{% static 'http://tympanus.net/codrops/2010/07/16/slide-down-box-menu/' %}"></a>
 							<a href="{% static 'http://www.flickr.com/photos/arcticpuppy/sets/72157622090180990/' %}"></a>
 						</span>
 					</div>
-					<!-- <div  style="text-align:center;border:1px;background-color:rgb(14, 14, 15); margin: 4px">
-						<center>
-						<select>
-							<option value= "user"> User </option>
-							<option value= "developer"> Developer </option>
-						</select>
-						</center>
-					</div> -->
-					<br> <br>
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Email</span>
-					</div>
 					
+					
+					<br> <br>
+					<div class="wrap-input100 validate-input" data-validate = "Developer/User">
+						<input class="input100" type="text" name="user_type">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Who are you?</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="username", placeholder="username">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Username</span>
+					</div>		
 					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass">
+						<input class="input100" type="password" name="password", placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
 					</div>
