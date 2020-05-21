@@ -1,5 +1,6 @@
 {% load static %}
 {% static "images" as baseUrl %}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
@@ -34,7 +35,7 @@
 			<ul id="sdt_menu" class="sdt_menu">
 				<li>
 					<a href="#">
-						<img src="{{baseUrl}}/1.jpg" alt=""/>
+						<img src="media/{{user.username}}.jpg" alt=""/>
 						<span class="sdt_active"></span>
 						<span class="sdt_wrap">
 							<span class="sdt_link">About me</span>

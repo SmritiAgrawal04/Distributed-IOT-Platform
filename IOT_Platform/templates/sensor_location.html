@@ -1,0 +1,123 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+   
+    <head>
+        <meta charset="utf-8"/>
+        <title>Sensor Location Information</title>
+        
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link href="{% static 'vendor2/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'vendor2/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor2/swiper/css/swiper.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/layout.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="favicon.ico"/>
+
+        <style> 
+            p.b {
+              font: italic small-caps bold 30px/40px georgia,garamond,serif;
+            }
+            </style>
+    </head>
+   
+  
+    <body id="body" data-spy="scroll" data-target=".header">
+
+          <header class="header navbar-fixed-top">
+              <nav class="navbar" role="navigation">
+                <div class="container">
+                      <div class="menu-container js_nav-item">
+                        <p class="b"><font color= "yellow" >Sensor Location Information</font></p>
+                    </div>
+                </div>
+            </nav>
+			</header>
+       
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="container">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+            </div>
+
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img class="img-responsive" src="{{baseUrl}}/01.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h1 class="carousel-title">Building-8357</h1>
+                                {% for value in loc1 %}
+                                <p class="color-white">{{value.id}}  {{value.stype}} <br></p>
+                                {% endfor %}
+                            </div>
+                            <a href="developer_profile" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">GO BACK</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="{{baseUrl}}/02.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h2 class="carousel-title">Room-634</h2>
+                                {% for value in loc2 %}
+                                <p class="color-white">{{value.id}}  {{value.stype}} <br></p>
+                                {% endfor %}
+                            </div>
+                            <a href="developer_profile" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">GO BACK</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="{{baseUrl}}/sensor.jpeg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h2 class="carousel-title">Room-0464</h2>
+                                {% for value in loc3 %}
+                                <p class="color-white">{{value.id}}  {{value.stype}} <br></p>
+                                {% endfor %}
+                            </div>
+                            <a href="developer_profile" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">GO BACK</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--========== SLIDER ==========-->
+
+        <!-- Back To Top -->
+        <!-- <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a> -->
+
+        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- CORE PLUGINS -->
+        <script src="{% static 'vendor2/jquery.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'vendor2/jquery-migrate.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'vendor2/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="{% static 'vendor2/jquery.easing.js' %}" type="text/javascript"></script>
+        <script src="{% static 'vendor2/jquery.back-to-top.js' %}" type="text/javascript"></script>
+        <script src="{% static 'vendor2/jquery.smooth-scroll.js' %}" type="text/javascript"></script>
+        <script src="{% static 'vendor2/jquery.wow.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'vendor2/swiper/js/swiper.jquery.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'vendor2/masonry/jquery.masonry.pkgd.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'vendor2/masonry/imagesloaded.pkgd.min.js' %}" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="{% static 'js/layout.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/components/wow.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/components/swiper.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/components/masonry.min.js' %}" type="text/javascript"></script>
+
+    </body>
+    <!-- END BODY -->
+</html>
