@@ -14,14 +14,16 @@
 
         <style>
 			body{
-				background:#333 url({{baseUrl}}/iot3.jpg)  repeat center ;
+				background:#333 url({{baseUrl}}/iot6.jpg) ;
+				background-repeat: no-repeat;
+  				background-size: 1400px 600px;
 				font-family:Arial;
 			}
 			span.reference a:hover{
 				color:#ddd;
 			}
 			ul.sdt_menu{
-				margin-top:100px;
+				margin-top:10px;
 			}
 		</style>
    
@@ -31,15 +33,15 @@
     <body>
         {% csrf_token %}
 		<div class="content">
-			<h1 class="title"><center><font color="pink">Welcome to IOT World {{user.first_name}} !</center></font></h1>
+			<br><br><br><br><br>
 			<ul id="sdt_menu" class="sdt_menu">
 				<li>
 					<a href="#">
-						<img src="media/{{user.username}}.jpg" alt=""/>
+						<img src="/media/{{user.username}}.jpg" alt=""/>
 						<span class="sdt_active"></span>
 						<span class="sdt_wrap">
-							<span class="sdt_link">About me</span>
-							<span class="sdt_descr"><font color="yellow">Get to know yourself</font></span>
+							<span class="sdt_link">Welcome</span>
+							<span class="sdt_descr"><font color="yellow">{{user.first_name}}'s Profile </font></span>
 						</span>
 					</a>
 					<div class="sdt_box">
@@ -60,24 +62,9 @@
 						</span>
 					</a>
 					<div class="sdt_box" style="overflow-y:scroll; height:200px">
-						<a href="#">Job Board Website</a>
-						<a href="#">Shopping Cart</a>
-                        <a href="#">Interactive Maps</a>
-                        <a href="#">Job Board Website</a>
-						<a href="#">Shopping Cart</a>
-                        <a href="#">Interactive Maps</a>
-                        <a href="#">Job Board Website</a>
-						<a href="#">Shopping Cart</a>
-                        <a href="#">Interactive Maps</a>
-                        <a href="#">Job Board Website</a>
-						<a href="#">Shopping Cart</a>
-                        <a href="#">Interactive Maps</a>
-                        <a href="#">Job Board Website</a>
-						<a href="#">Shopping Cart</a>
-                        <a href="#">Interactive Maps</a>
-                        <a href="#">Job Board Website</a>
-						<a href="#">Shopping Cart</a>
-                        <a href="#">Interactive Maps</a>
+						{% for app in apps_table %}
+						<a href="/apps_info/appinfo_user?app={{app.app_name}}">{{app.app_name}}</a>
+						{% endfor %}
 					</div>
                 </li>
                 <li>
@@ -92,6 +79,7 @@
 				</li>
 			</ul>
 		</div>
+		
         
 
         <!-- The JavaScript -->
@@ -152,6 +140,6 @@
 						 .animate({'top':'25px'},500);
 				});
             });
-        </script>
+		</script>
     </body>
 </html>

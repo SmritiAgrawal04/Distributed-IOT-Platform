@@ -14,7 +14,9 @@
 
         <style>
 			body{
-				background:#333 url({{baseUrl}}/iot3.jpg)  repeat center ;
+				background:#333 url({{baseUrl}}/iot6.jpg);
+				background-repeat: no-repeat;
+  				background-size: 1400px 600px;
 				font-family:Arial;
 			}
 			span.reference a:hover{
@@ -31,21 +33,21 @@
     <body>
         {% csrf_token %}
 		<div class="content">
-			<h1 class="title"><center><font color="pink">Welcome to IOT World {{user.first_name}} !</center></font></h1>
+			<br><br><br>
 			<ul id="sdt_menu" class="sdt_menu">
 				<li>
 					<a href="#">
-						<img src="/media/sim.jpg" alt=""/>
+						<img src="/media/{{user.username}}.jpg" alt=""/>
 						<span class="sdt_active"></span>
 						<span class="sdt_wrap">
-							<span class="sdt_link">About me</span>
-							<span class="sdt_descr"><font color="yellow">Get to know yourself</font></span>
+							<span class="sdt_link">Welcome</span>
+							<span class="sdt_descr"><font color="yellow">{{user.first_name}}'s Profile</font></span>
 						</span>
 					</a>
 					<div class="sdt_box">
-							<a href="#">Hi {{user.first_name}} {{user.last_name}}</a>
-                            <a href="#">aka {{user.username}}</a>
-                            <a href="#">I contact you at: {{user.email}}</a>
+							<a>Hi {{user.first_name}} {{user.last_name}}</a>
+                            <a>aka {{user.username}}</a>
+                            <a>I contact you at: {{user.email}}</a>
                             
 					</div>
 				</li>
@@ -56,7 +58,7 @@
 						<span class="sdt_active"></span>
 						<span class="sdt_wrap">
 							<span class="sdt_link">Sensors</span>
-							<span class="sdt_descr"><font color="yellow">Access the Services</font></span>
+							<span class="sdt_descr"><font color="yellow">Prepare the Services</font></span>
 						</span>
 					</a>
 					<div class="sdt_box" style="overflow-y:scroll; height:200px">
@@ -64,7 +66,17 @@
 						<a href="sensor_locations">Sensor Locations</a>
                         
 					</div>
-                </li>
+				</li>
+				<li>
+					<a href="upload">
+						<img src="{{baseUrl}}/upload.jpeg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Upload</span>
+                            <span class="sdt_descr"><font color="yellow">Upload Application</font></span>
+						</span>
+					</a>
+				</li>
                 <li>
 					<a href="logout">
 						<img src="{{baseUrl}}/logout.png" alt=""/>
@@ -77,6 +89,7 @@
 				</li>
 			</ul>
 		</div>
+
         
 
         <!-- The JavaScript -->
@@ -137,6 +150,13 @@
 						 .animate({'top':'25px'},500);
 				});
             });
-        </script>
+		</script>
+		
+		<footer>
+			{% for message in messages %}
+			<h3><center><font color= "yellow", size= '4'> {{message}} </font></center> </h3>
+			<br>
+			{% endfor %}
+		</footer>
     </body>
 </html>

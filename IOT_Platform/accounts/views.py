@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
+from django.apps import apps
 
 # Create your views here.
 
@@ -15,21 +16,24 @@ def login(request):
           password= request.POST['password']
 
           if (user_type == "Developer" or user_type == "developer"):
-               user_type= True
+               user_type_bool= True
           else:
-               user_type= False
+               user_type_bool= False
 
           user= auth.authenticate(username= username, password= password)
 
           if user is not None:
-               if user.is_superuser == user_type:
+               if user.is_superuser == user_type_bool:
                     auth.login(request, user)
-                    if user_type== False:
-                         return render(request, 'user_profile.html', {"user" :user})
+                    if user_type_bool== False:
+                         return redirect('sensors/user_profile', {"user" :user})
                     else:
                          return redirect('sensors/developer_profile', {"user" :user})
                else:
-                    messages.info(request, "Invalid Credentials")
+                    if(user_type== 'Developer' or user_type== 'developer' or user_type== 'user' or user_type== 'User'):
+                         messages.info(request, "**You are not a {}, Try Again!**".format(user_type))
+                    else:
+                         messages.info(request, "**{} is not a valid answer to 'Who are you?'**". format(user_type))
                     return redirect('login')
           else:
                messages.info(request, "Invalid Credentials")
