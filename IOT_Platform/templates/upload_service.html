@@ -1,0 +1,117 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Schedule Service</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Slide Login Form template Responsive, Login form web template, Flat Pricing tables, Flat Drop downs Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+	 <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+	<!-- Custom Theme files -->
+	<link href="{% static 'css/style_user.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'css/font_awesome.min.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!-- //Custom Theme files -->
+
+	<!-- web font -->
+	<link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+	<!-- //web font -->
+
+</head>
+<body>
+
+<!-- main -->
+<div class="w3layouts-main"> 
+	<div class="bg-layer">
+		<h1>Schedule your Service </h1>
+		<div class="header-main">
+			<div class="main-icon">
+				<span class="fa fa-eercast"></span>
+			</div>
+			<div class="header-left-bottom">
+				<form action="#" method="post">
+					<div class="icon1">
+						<input type="radio" id="Yearly" name="period" value="Yearly">
+						<label for="male">Schedule Yearly</label><br>
+						<input type="radio" id="Monthly" name="period" value="Monthly">
+						<label for="female">Schedule Monthly</label><br>
+						<input type="radio" id="Weekly" name="period" value="Weekly">
+						<label for="other">Schedule Weekly</label><br>
+						<input type="radio" id="Daily" name="period" value="Daily">
+						<label for="other">Schedule Daily</label><br>
+						<input type="radio" id="Hourly" name="period" value="Hourly">
+						<label for="other">Schedule Hourly</label>
+						<input type="radio" id="Minutely" name="period" value="Minutely">
+						<label for="other">Schedule Minutely</label>
+					</div>
+
+					<div class="icon1">
+						Enter # years if it is a valid option for you else type 'NA'
+						<input type="text" name= "yearly" >
+					</div>
+
+					<div class="icon1">
+						Enter # months if it is a valid option for you else type 'NA'
+						<input type="text" name= "monthly" >
+					</div>
+
+					<div class="icon1">
+						Enter weekday if it is a valid option for you else type 'NA'
+						<input type="text" name= "weekly" >
+					</div>
+
+					<div class="icon1">
+						Enter # days if it is a valid option for you else type 'NA'
+						<input type="text" name= "daily" >
+					</div>
+
+					<div class="icon1">
+						Enter # years if it is a valid option for you else type 'NA'
+						<input type="text" name= "yearly" >
+					</div>
+
+					<div class="icon1">
+						Enter # months if it is a valid option for you else type 'NA'
+						<input type="text" name= "monthly" >
+					</div>
+
+					<div class="icon1">
+						<span class="fa fa-lock"></span>
+						<input type="password" placeholder="Password" required=""/>
+					</div>
+					
+					<div class="bottom">
+						<button class="btn">Log In</button>
+					</div>
+				</form>	
+			</div>
+		</div>
+		
+		<!-- copyright -->
+		<div class="copyright">
+			<p> Thanks for Choosing Us </p>
+		</div>
+		<!-- //copyright --> 
+	</div>
+</div>	
+<!-- //main -->
+
+</body>
+</html>

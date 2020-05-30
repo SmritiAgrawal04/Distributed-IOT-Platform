@@ -30,23 +30,31 @@
     <div class="container" >
         <div class="row" >
             <div class="section-label reveal">
-                <p>Applications</p>
-            </div>
-            {% for obj in app_obj %}
+              <p>Applications</p>
+          </div>
+          {% for obj in app_obj %}
             <div class="col-md-6 col-md-offset-6 text-column">
                 <h2>{{obj.app_name}}</h2>
                 <h3>{{obj.app_owner}}</h3>
                 <p>{{obj.app_desc}}</p>
-
-                <center><a href="#contact-section-container" class="btn btn-primary btn-lg anchor-link" title="">Get in touch</a></center>
-
+                <p>The services that our application provides are-</p>
+                {% for service in services %}
+                  #{{service}}<br>
+                {% endfor %}
             </div>
+            <!-- class="btn btn-primary btn-lg anchor-link" title="" -->
             
-            <div class="col-md-6 col-md-offset-6 text-column">
+            <div class="col-md-6 col-md-offset-6 text-column">        
+              <center>
+                <form action="/apps_info/appinfo_user" method="POST">
+                  {% csrf_token %}   
+                <button type= 'submit' class="btn btn-primary">Use Application Service(s)</button>
+              </form>
+            </center>
               <div class="fa-container">
                   <i class="fa fa-heart-o fa-3x" aria-hidden="true"></i>
               </div>
-              <h4 class="text-center">Love Us? Contact At: {{obj.app_email}}</h4>
+              <h6 class="text-center">Contact Details: {{obj.app_email}}</h6>
           </div>
             {% endfor %}
         </div>

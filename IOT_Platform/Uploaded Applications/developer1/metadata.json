@@ -1,0 +1,48 @@
+{"Automated AC Service":
+	{"algorithm_name": "algo1.py",
+	 "schedule_day_wise": 0,
+	 "schedule_data_once" :0,
+	 "schedule_date_periodically" :0,
+	 "schedule_hourly" :0,
+	 "schedule_minute_wise" :1,
+
+	 "schedule_day": ["THU"],
+	 "schedule_minutes" : 0.5
+	 },
+
+"Emergency Fire Alarm Service":
+	{"algorithm_name": "algo2.py",
+	 "schedule_day_wise": 0,
+	 "schedule_data_once" :0,
+	 "schedule_date_periodically" :0,
+	 "schedule_hourly" :0,
+	 "schedule_minute_wise" :1,
+
+	 "schedule_day": ["THU"],
+	 "schedule_minutes" : 0.5
+	 },
+
+"llegal Access Detection":
+	{"algorithm_name": "algo2.py",
+	 "schedule_day_wise": 0,
+	 "schedule_data_once" :0,
+	 "schedule_date_periodically" :0,
+	 "schedule_hourly" :0,
+	 "schedule_minute_wise" :1,
+
+	 "schedule_day": ["THU"],
+	 "schedule_minutes" : 0.5
+	 },
+
+"Classroom Scheduling Service":
+	{"algorithm_name": "algo2.py",
+	 "schedule_day_wise": 0,
+	 "schedule_data_once" :0,
+	 "schedule_date_periodically" :0,
+	 "schedule_hourly" :0,
+	 "schedule_minute_wise" :1,
+
+	 "schedule_day": ["THU"],
+	 "schedule_minutes" : 0.5
+	 }
+	}
