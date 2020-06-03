@@ -46,61 +46,96 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<span class="fa fa-eercast"></span>
 			</div>
 			<div class="header-left-bottom">
-				<form action="#" method="post">
+				<form action="/scheduler/schedule_service" method="POST">{% csrf_token %}
 					<div class="icon1">
-						<input type="radio" id="Yearly" name="period" value="Yearly">
-						<label for="male">Schedule Yearly</label><br>
-						<input type="radio" id="Monthly" name="period" value="Monthly">
-						<label for="female">Schedule Monthly</label><br>
+						<input type="text" name= "app_name" value="{{app_name}}" readonly >
+					</div>
+
+					<div class="icon1">
+						<select name="service">
+							<option selected> Choose your Service</option>
+							{% for service in services %}
+							<option>{{service}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="icon1">
+						<!-- <input type="radio" id="Yearly" name="period" value="Yearly">
+						<label for="Yearly">Schedule Yearly</label><br> -->
+						<!-- <input type="radio" id="Monthly" name="period" value="Monthly">
+						<label for="Monthly">Schedule Monthly</label><br> -->
 						<input type="radio" id="Weekly" name="period" value="Weekly">
-						<label for="other">Schedule Weekly</label><br>
-						<input type="radio" id="Daily" name="period" value="Daily">
-						<label for="other">Schedule Daily</label><br>
+						<label for="Weekly">Schedule Weekly</label><br>
+						<!-- <input type="radio" id="Daily" name="period" value="Daily">
+						<label for="Daily">Schedule Daily</label><br> -->
 						<input type="radio" id="Hourly" name="period" value="Hourly">
-						<label for="other">Schedule Hourly</label>
+						<label for="Hourly">Schedule Hourly</label><br>
 						<input type="radio" id="Minutely" name="period" value="Minutely">
-						<label for="other">Schedule Minutely</label>
+						<label for="Minutely">Schedule Minutely</label>
 					</div>
 
-					<div class="icon1">
+					<!-- <div class="icon1">
 						Enter # years if it is a valid option for you else type 'NA'
 						<input type="text" name= "yearly" >
-					</div>
+					</div> -->
 
-					<div class="icon1">
+					<!-- <div class="icon1">
 						Enter # months if it is a valid option for you else type 'NA'
 						<input type="text" name= "monthly" >
+					</div> -->
+
+					<div class="icon1">
+						<select name="weekly">
+							<option selected>Choose your Weekday</option>
+							<option>Sunday</option>
+							<option>Monday</option>
+							<option>Tuesday</option>
+							<option>Wednesday</option>
+							<option>Thursday</option>
+							<option>Friday</option>
+							<option>Saturday</option>
+						</select>
+						<!-- <input type="radio" id="sun" name="week" value="sun">
+						<label for="sun">Schedule on Sunday</label><br>
+						<input type="radio" id="mon" name="week" value="mon">
+						<label for="mon">Schedule on Monday</label><br>
+						<input type="radio" id="tue" name="week" value="tue">
+						<label for="tue">Schedule on Tuesday</label><br>
+						<input type="radio" id="wed" name="week" value="wed">
+						<label for="wed">Schedule on Wednesday</label><br>
+						<input type="radio" id="thu" name="week" value="thu">
+						<label for="thu">Schedule on Thursday</label><br>
+						<input type="radio" id="fri" name="week" value="fri">
+						<label for="fri">Schedule on Friday</label><br>
+						<input type="radio" id="sat" name="week" value="sat">
+						<label for="sat">Schedule on Saturday</label><br>
+						<input type="radio" id="none" name="week" value="none">
+						<label for="none">None</label><br> -->
 					</div>
 
 					<div class="icon1">
-						Enter weekday if it is a valid option for you else type 'NA'
-						<input type="text" name= "weekly" >
+						<input type="text" name= "hourly" placeholder="No. of Hours">
 					</div>
 
 					<div class="icon1">
-						Enter # days if it is a valid option for you else type 'NA'
-						<input type="text" name= "daily" >
+						<input type="text" name= "minutely" placeholder="No. of Minutes" >
 					</div>
-
-					<div class="icon1">
-						Enter # years if it is a valid option for you else type 'NA'
-						<input type="text" name= "yearly" >
-					</div>
-
-					<div class="icon1">
-						Enter # months if it is a valid option for you else type 'NA'
-						<input type="text" name= "monthly" >
-					</div>
+					
 
 					<div class="icon1">
 						<span class="fa fa-lock"></span>
-						<input type="password" placeholder="Password" required=""/>
+						<input type="password" name="Password" placeholder="Password" required=""/>
 					</div>
 					
 					<div class="bottom">
-						<button class="btn">Log In</button>
+						<button class="btn">Schedule</button>
 					</div>
 				</form>	
+
+				<!-- {% for message in messages %}
+				<h3><center><font color= "yellow", size= '4'> {{message}} </font></center> </h3>
+				<br>
+				{% endfor %} -->
 			</div>
 		</div>
 		

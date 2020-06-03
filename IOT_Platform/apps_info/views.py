@@ -45,10 +45,6 @@ def upload(request):
         return render(request, 'upload.html')
 
 def appinfo_user(request):
-
-    if request.method=="POST":
-        return render(request, 'upload_service.html')
-
     app_name= request.GET['app']
     app_obj= app_model.objects.filter(app_name__exact= app_name)
 
@@ -70,3 +66,25 @@ def appinfo_user(request):
         algo_name= entry['algorithm_name']
 
     return render(request, 'appinfo_user.html', {'app_obj': app_obj, 'services': services})
+
+def user_schedule(request):
+    if request.method== "GET":
+        app_name= request.GET['app']
+        app_obj= app_model.objects.filter(app_name__exact= app_name)
+
+        for ao in app_obj:
+            file_obj= filemap.objects.filter(app_name__exact= app_name)
+        for fo in file_obj:
+            filename= fo.filename
+
+        path= "./Uploaded Applications/{}/*.json".format(filename)
+        for file in glob.glob(path):
+            f= open(file)
+            result= f.read()
+            json_result= json.loads(result)
+
+        services=[]
+        for service in json_result:
+            services.append(service)
+
+        return render(request, 'upload_service.html', {'app_name':app_name, 'services': services})

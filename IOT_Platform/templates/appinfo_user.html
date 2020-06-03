@@ -46,10 +46,10 @@
             
             <div class="col-md-6 col-md-offset-6 text-column">        
               <center>
-                <form action="/apps_info/appinfo_user" method="POST">
+                <a href="/apps_info/user_schedule?app={{obj.app_name}}">
                   {% csrf_token %}   
                 <button type= 'submit' class="btn btn-primary">Use Application Service(s)</button>
-              </form>
+                </a>
             </center>
               <div class="fa-container">
                   <i class="fa fa-heart-o fa-3x" aria-hidden="true"></i>
