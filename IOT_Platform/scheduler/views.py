@@ -1,9 +1,24 @@
 from django.shortcuts import render, redirect
-import schedule, json, os, time, threading
+import schedule, json, os, time, threading, glob
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from apps_info.models import filemap
+from confluent_kafka import Consumer, KafkaError
 
-def shoot(period, freq):
+def shoot(app_name, service, period, freq):
+	file_obj= filemap.objects.filter(app_name__exact= app_name)
+	for fo in file_obj:
+		filename= fo.filename
+
+	path= "./Uploaded Applications/{}/*.json".format(filename)
+	for file in glob.glob(path):
+		f= open(file)
+		result= f.read()
+		json_result= json.loads(result)
+	entry= json_result[service]
+	algo_name= entry['algorithm_name']
+	path= "./Uploaded Applications/{}/".format(filename)
+
 	if period== "Weekly":
 
 		if (freq == "Sunday"):
@@ -25,7 +40,7 @@ def shoot(period, freq):
 		schedule.every(freq).hour.do(start_action)
 
 	elif period== "Minutely":
-		schedule.every(freq).minutes.do(start_action)
+		schedule.every(freq).minutes.do(start_action, path, algo_name)
 
 	while True: 
 		schedule.run_pending() 
@@ -48,7 +63,7 @@ def schedule_service(request):
 			elif period== "Minutely":
 				freq= float(request.POST['minutely'])
 
-			t= threading.Thread(target=shoot, args=(period, freq))
+			t= threading.Thread(target=shoot, args=(app_name, service, period, freq))
 			t.start()
 
 			messages.info(request, "**Service Scheduled!**")
@@ -59,5 +74,6 @@ def schedule_service(request):
 			messages.info(request, "**Password Incorrect, Try Again!**")
 			return redirect ('/sensors/user_profile')    
 
-def start_action():
+def start_action(path, algo_name):
 	print ("***************Here I'm************")
+	exec(open(path+algo_name).read())

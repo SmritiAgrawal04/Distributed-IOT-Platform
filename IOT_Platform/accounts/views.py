@@ -26,9 +26,9 @@ def login(request):
                if user.is_superuser == user_type_bool:
                     auth.login(request, user)
                     if user_type_bool== False:
-                         return redirect('sensors/user_profile', {"user" :user})
+                         return redirect('sensor_manager/user_profile', {"user" :user})
                     else:
-                         return redirect('sensors/developer_profile', {"user" :user})
+                         return redirect('sensor_manager/developer_profile', {"user" :user})
                else:
                     if(user_type== 'Developer' or user_type== 'developer' or user_type== 'user' or user_type== 'User'):
                          messages.info(request, "**You are not a {}, Try Again!**".format(user_type))

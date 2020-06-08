@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sensors.apps.SensorsConfig',
+    'sensor_manager.apps.SensorManagerConfig',
     'apps_info.apps.AppsInfoConfig'
     ]
 

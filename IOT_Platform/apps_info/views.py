@@ -35,7 +35,7 @@ def upload(request):
             file_obj.save()
             app_obj.save()
             messages.info(request, "**Application Uploaded Successfuly!**")
-            return redirect('/sensors/developer_profile')
+            return redirect('/sensor_manager/developer_profile')
 
         else:
             messages.info(request, "**Wrong Password, Try Again!**")
