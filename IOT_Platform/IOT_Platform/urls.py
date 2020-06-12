@@ -23,7 +23,6 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('sensor_manager/', include('sensor_manager.urls')),
     path('apps_info/', include('apps_info.urls')),
-    path('scheduler/', include('scheduler.urls'))
 ]
 
 urlpatterns= urlpatterns+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

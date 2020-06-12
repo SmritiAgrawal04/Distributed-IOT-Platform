@@ -1,48 +1,33 @@
 {"Automated AC Service":
 	{"algorithm_name": "algo1.py",
-	 "schedule_day_wise": 0,
-	 "schedule_data_once" :0,
-	 "schedule_date_periodically" :0,
-	 "schedule_hourly" :0,
-	 "schedule_minute_wise" :1,
-
-	 "schedule_day": ["THU"],
-	 "schedule_minutes" : 0.5
+	 "sensor_type": ["temperature"],
+	 "sensor_location": ["Building-8357"],
+	 "cpu_requirement": 0.0,
+	 "memory_requirement": 0,
+	 "dependencies" : ["cat deployer.py", "mkdir test"]
 	 },
 
 "Emergency Fire Alarm Service":
-	{"algorithm_name": "algo2.py",
-	 "schedule_day_wise": 0,
-	 "schedule_data_once" :0,
-	 "schedule_date_periodically" :0,
-	 "schedule_hourly" :0,
-	 "schedule_minute_wise" :1,
-
-	 "schedule_day": ["THU"],
-	 "schedule_minutes" : 0.5
+	{"algorithm_name": "algo1.py",
+	 "sensor_type": ["temperature"],
+	 "sensor_location": ["Room-634"],
+	 "cpu_requirement": 10.0,
+	 "memory_requirement": 40
 	 },
 
 "llegal Access Detection":
 	{"algorithm_name": "algo2.py",
-	 "schedule_day_wise": 0,
-	 "schedule_data_once" :0,
-	 "schedule_date_periodically" :0,
-	 "schedule_hourly" :0,
-	 "schedule_minute_wise" :1,
-
-	 "schedule_day": ["THU"],
-	 "schedule_minutes" : 0.5
+	 "sensor_type": ["binary"],
+	 "sensor_location": ["Building-8357"],
+	 "cpu_requirement": "1234t4",
+	 "memory_requirement": "erf43f43gv3w"
 	 },
 
 "Classroom Scheduling Service":
 	{"algorithm_name": "algo2.py",
-	 "schedule_day_wise": 0,
-	 "schedule_data_once" :0,
-	 "schedule_date_periodically" :0,
-	 "schedule_hourly" :0,
-	 "schedule_minute_wise" :1,
-
-	 "schedule_day": ["THU"],
-	 "schedule_minutes" : 0.5
+	 "sensor_type": ["temperature"],
+	 "sensor_location": ["Building-8357"],
+	 "cpu_requirement": "1234t4",
+	 "memory_requirement": "erf43f43gv3w"
 	 }
 	}

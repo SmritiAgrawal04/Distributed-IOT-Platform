@@ -46,7 +46,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<span class="fa fa-eercast"></span>
 			</div>
 			<div class="header-left-bottom">
-				<form action="/scheduler/schedule_service" method="POST">{% csrf_token %}
+				<form action="/apps_info/user_schedule" method="POST">{% csrf_token %}
 					<div class="icon1">
 						<input type="text" name= "app_name" value="{{app_name}}" readonly >
 					</div>
