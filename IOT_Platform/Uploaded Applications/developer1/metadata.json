@@ -4,7 +4,7 @@
 	 "sensor_location": ["Building-8357"],
 	 "cpu_requirement": 0.0,
 	 "memory_requirement": 0,
-	 "dependencies" : ["cat deployer.py", "mkdir test"]
+	 "dependencies" : ["cat deployer.py"]
 	 },
 
 "Emergency Fire Alarm Service":

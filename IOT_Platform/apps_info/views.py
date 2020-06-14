@@ -128,7 +128,7 @@ def run_scheduler(app_name, service, period, freq):
 		json_result= json.loads(result)
 	entry= json_result[service]
 	algo_name= entry['algorithm_name']
-	path_service= "../Uploaded Applications/{}/".format(filename)
+	path_service= "../../Uploaded Applications/{}/".format(filename)
 	path_app= "."+path_app
 
 

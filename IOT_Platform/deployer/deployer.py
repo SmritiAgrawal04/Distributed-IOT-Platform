@@ -9,6 +9,14 @@ while True:
 
     c, addr = s.accept()  
     print ("Connection Successful") 
+
+    server_id= c.recv(1024).decode('utf-8')
+    c.send(bytes("ack", 'utf-8'))
+    server_ip= c.recv(1024).decode('utf-8')
+    c.send(bytes("ack", 'utf-8'))
+    server_port= int(c.recv(1024).decode('utf-8'))
+    c.send(bytes("ack", 'utf-8'))
+
     num_depend= int(c.recv(1024).decode('utf-8'))
     c.send(bytes("ack", 'utf-8'))
     for num in range (0, num_depend):

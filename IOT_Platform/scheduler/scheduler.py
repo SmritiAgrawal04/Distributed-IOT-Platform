@@ -1,6 +1,24 @@
-import socket, threading, schedule, json, time ,glob      
+import socket, threading, schedule, json, time ,glob  
+from confluent_kafka import Consumer, KafkaError, Producer
+p = Producer({'bootstrap.servers': "localhost:9092"})
 
-def run_deployer(service, path_app):
+def run_logging(server_id, server_ip, server_port, app_name, service, period, freq, path_app, path_service, algo_name):
+	log_data= {'server_id' : server_id,
+			   'server_ip' : server_ip,
+			   'server_port' : server_port,
+			   'app_name': app_name,
+			   'service' : service,
+			   'period' : period,
+			   'freq' : freq,
+			   'path_app' : path_app,
+			   'path_service' : path_service,
+			   'algo_name' : algo_name
+	}
+	log_data= json.dumps(log_data)
+	p.produce('logger', log_data.encode('utf-8'))
+	p.poll(0)
+
+def run_deployer(service, path_app, server_id, server_ip, server_port):
 	dep = socket.socket()  
 	dep.connect(('127.0.0.1', int(8080))) 
 
@@ -11,6 +29,13 @@ def run_deployer(service, path_app):
 	entry= json_result[service]
 	dependencies= entry['dependencies']
 	print (dependencies, len(dependencies))
+
+	dep.send(bytes(server_id, 'utf-8'))
+	dep.recv(1024)
+	dep.send(bytes(server_ip, 'utf-8'))
+	dep.recv(1024)
+	dep.send(bytes(str(server_port), 'utf-8'))
+	dep.recv(1024)
 
 	dep.send(bytes(str(len(dependencies)),'utf-8'))
 	dep.recv(1024)
@@ -41,14 +66,17 @@ def run_loadBalancer(service, path_app):
 	print (server_id, server_ip, server_port)
 	return server_id, server_ip, server_port
 
-def run_server(path_service, algo_name, service, path_app):
-	# Communication with Load Balancer
+def run_server(app_name, service, period, freq, path_app, path_service, algo_name):
+	# Communication with Load Balancer to get appropriate server
 	server_id, server_ip, server_port= run_loadBalancer(service, path_app)
 
-	# Communication with Deployer
-	run_deployer(service, path_app)
+	# Communication with Deployer to install the dependencies
+	run_deployer(service, path_app, server_id, server_ip, server_port)
 
-	# Communication with Server
+	# Communication with Logging to update ans store logs
+	run_logging(server_id, server_ip, server_port, app_name, service, period, freq, path_app, path_service, algo_name)
+
+	# Communication with Server to execute the service
 	rs = socket.socket()  
 	rs.connect(('127.0.0.1', int(server_port))) 
 
@@ -80,7 +108,7 @@ def schedule_algorithm(app_name, service, period, freq, path_app, path_service, 
 		schedule.every(freq).hour.do(run_server)
 
 	elif period== "Minutely":
-		schedule.every(freq).minutes.do(run_server, path_service, algo_name, service, path_app)
+		schedule.every(freq).minutes.do(run_server, app_name, service, period, freq, path_app, path_service, algo_name)
 
 	while True: 
 		schedule.run_pending() 
