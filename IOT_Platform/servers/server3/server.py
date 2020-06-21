@@ -1,12 +1,12 @@
 from confluent_kafka import Producer
 import psutil, json, time, socket, threading, os, shutil
 
-server_id= 'server1'
-server_port= 7000
+server_id= 'server3'
+server_port= 7004
 
 def installDependencies():
 	install = socket.socket()
-	port = 7001                
+	port = 7005              
 	install.bind(('', port))         
 	install.listen(5) 
 
@@ -16,7 +16,6 @@ def installDependencies():
 		depend= c.recv(1024).decode('utf-8')
 		c.send(bytes("ack", 'utf-8'))
 		os.system(depend)
-
 
 p = Producer({'bootstrap.servers': "localhost:9092"})
 def sendStats():
@@ -65,14 +64,14 @@ def startAction(request_data):
 
 	# exec(open(path+algo_name).read())
 	shutil.copyfile(path_service+algo_name, "./{}".format(algo_name))
-	command="python3 {} {}".format(algo_name, 1)
+	command="python3 {} {}".format(algo_name, 3)
 	print("command= ", command)
 	os.system(command)
 
 
 def runService():
-	s = socket.socket()
-	port = 7000                
+	s = socket.socket()          
+	port = 7004             
 	s.bind(('', port))         
 	s.listen(5) 
 

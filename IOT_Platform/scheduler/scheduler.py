@@ -80,9 +80,17 @@ def run_server(app_name, service, period, freq, path_app, path_service, algo_nam
 	rs = socket.socket()  
 	rs.connect(('127.0.0.1', int(server_port))) 
 
-	rs.send(bytes(path_service, 'utf-8'))
-	rs.recv(1024)
-	rs.send(bytes(algo_name, 'utf-8'))
+	request_data= {
+			   'app_name': app_name,
+			   'service' : service,
+			   'period' : period,
+			   'freq' : freq,
+			   'path_app' : path_app,
+			   'path_service' : path_service,
+			   'algo_name' : algo_name
+	}
+	request_data= json.dumps(request_data)
+	rs.send(bytes(request_data, 'utf-8'))
 	rs.recv(1024)
 
 
