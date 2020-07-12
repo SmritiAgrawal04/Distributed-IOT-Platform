@@ -66,7 +66,7 @@ def run_loadBalancer(service, path_app):
 	print (server_id, server_ip, server_port)
 	return server_id, server_ip, server_port
 
-def run_server(app_name, service, period, freq, path_app, path_service, algo_name):
+def run_server(app_name, service, period, freq, path_app, path_service, algo_name, username, email, firstname, lastname):
 	# Communication with Load Balancer to get appropriate server
 	server_id, server_ip, server_port= run_loadBalancer(service, path_app)
 
@@ -87,14 +87,18 @@ def run_server(app_name, service, period, freq, path_app, path_service, algo_nam
 			   'freq' : freq,
 			   'path_app' : path_app,
 			   'path_service' : path_service,
-			   'algo_name' : algo_name
+			   'algo_name' : algo_name,
+			   'username' : username,
+			   'email' : email,
+			   'firstname' : firstname,
+			   'lastname' : lastname
 	}
 	request_data= json.dumps(request_data)
 	rs.send(bytes(request_data, 'utf-8'))
 	rs.recv(1024)
 
 
-def schedule_algorithm(app_name, service, period, freq, path_app, path_service, algo_name):
+def schedule_algorithm(app_name, service, period, freq, path_app, path_service, algo_name, username, email, firstname, lastname):
 	if period== "Weekly":
 
 		if (freq == "Sunday"):
@@ -116,7 +120,7 @@ def schedule_algorithm(app_name, service, period, freq, path_app, path_service, 
 		schedule.every(freq).hour.do(run_server)
 
 	elif period== "Minutely":
-		schedule.every(freq).minutes.do(run_server, app_name, service, period, freq, path_app, path_service, algo_name)
+		schedule.every(freq).minutes.do(run_server, app_name, service, period, freq, path_app, path_service, algo_name, username, email, firstname, lastname)
 
 	while True: 
 		schedule.run_pending() 
@@ -131,42 +135,48 @@ if __name__ == "__main__":
 
 	while True: 
 	
-		c, addr = s.accept()      
-		
+		c, addr = s.accept()    
+
+		_request_= json.loads(c.recv(1024).decode("utf-8"))
+		c.send(bytes("ack", 'utf-8'))
+
 		# Communication with UI
-		app_name= c.recv(1024).decode("utf-8")
+		app_name= _request_['app_name']
 		print(app_name, type(app_name))
-		c.send(bytes("ack", 'utf-8'))
 
-		service= c.recv(1024).decode("utf-8")
+		service= _request_['service']
 		print (service, type(service))
-		c.send(bytes("ack", 'utf-8'))
 
-		period= c.recv(1024).decode("utf-8")
+		period= _request_['period']
 		print(period, type(period))
-		c.send(bytes("ack", 'utf-8'))
 
-		freq= c.recv(1024).decode("utf-8")
-		if period != "Weekly":
-			freq= float(freq)    
+		freq= _request_['freq']
 		print(freq, type(freq))
-		c.send(bytes("ack", 'utf-8'))
 
-		path_app= c.recv(1024).decode("utf-8")
+		path_app= _request_['path_app']
 		print(path_app, type(path_app))
-		c.send(bytes("ack", 'utf-8'))
 		
-		path_service= c.recv(1024).decode("utf-8")
+		path_service= _request_['path_service']
 		print(path_service, type(path_service))
-		c.send(bytes("ack", 'utf-8'))
 
-		algo_name= c.recv(1024).decode("utf-8")
+		algo_name= _request_['algo_name']
 		print(algo_name, type(algo_name))
-		c.send(bytes("ack", 'utf-8'))
+
+		username= _request_['username']
+		print(username, type(username))
+
+		email= _request_['email']
+		print(email, type(email))
+
+		firstname= _request_['firstname']
+		print(firstname, type(firstname))
+
+		lastname= _request_['lastname']
+		print(lastname, type(lastname))
 		
 		c.close() 
 		
-		t= threading.Thread(target=schedule_algorithm, args=(app_name, service, period, freq, path_app, path_service, algo_name))
+		t= threading.Thread(target=schedule_algorithm, args=(app_name, service, period, freq, path_app, path_service, algo_name, username, email, firstname, lastname))
 		t.start()
 
 

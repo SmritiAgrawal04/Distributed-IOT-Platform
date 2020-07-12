@@ -83,7 +83,42 @@ def user_schedule(request):
 			elif period== "Minutely":
 				freq= float(request.POST['minutely'])
 
-			run_scheduler(app_name, service, period, freq)
+			username= request.user.get_username()
+			email= request.user.email
+			firstname= request.user.first_name
+			lastname= request.user.last_name
+
+			file_obj= filemap.objects.filter(app_name__exact= app_name)
+			for fo in file_obj:
+				filename= fo.filename
+
+			path_app= "./Uploaded Applications/{}/*.json".format(filename)
+			for file in glob.glob(path_app):
+				f= open(file)
+				result= f.read()
+				json_result= json.loads(result)
+			entry= json_result[service]
+			algo_name= entry['algorithm_name']
+			path_service= "../../Uploaded Applications/{}/".format(filename)
+			path_app= "."+path_app
+
+
+
+			_request_= { 'app_name': app_name,
+						'service' : service,
+						'period' : period,
+						'freq' : freq,
+						'username' : username,
+						'email' : email,
+						'firstname' : firstname,
+						'lastname' : lastname,
+						'path_app' : path_app,
+						'path_service' : path_service,
+						'algo_name' : algo_name
+						}
+
+			_request_= json.dumps(_request_)
+			run_scheduler(_request_)
 
 			messages.info(request, "**Service Scheduled!**")
 			return redirect ('/sensor_manager/user_profile')  
@@ -116,46 +151,15 @@ def user_schedule(request):
 		return render(request, 'upload_service.html', {'app_name':app_name, 'services': services})
 
 
-def run_scheduler(app_name, service, period, freq):
-	file_obj= filemap.objects.filter(app_name__exact= app_name)
-	for fo in file_obj:
-		filename= fo.filename
-
-	path_app= "./Uploaded Applications/{}/*.json".format(filename)
-	for file in glob.glob(path_app):
-		f= open(file)
-		result= f.read()
-		json_result= json.loads(result)
-	entry= json_result[service]
-	algo_name= entry['algorithm_name']
-	path_service= "../../Uploaded Applications/{}/".format(filename)
-	path_app= "."+path_app
-
-
+def run_scheduler(_request_):
+	
 	s = socket.socket()          
 	port = 12345   
 	# connect to the server on local computer 
 	s.connect(('127.0.0.1', port)) 
 
 	# receive data from the server 
-	s.send(bytes(app_name, 'utf-8'))
+	s.send(bytes(_request_, 'utf-8'))
 	s.recv(1024)
-	s.send(bytes(service, 'utf-8'))
-	s.recv(1024)
-	s.send(bytes(period, 'utf-8'))
-	s.recv(1024)
-
-	if period== "Weekly":
-		s.send(bytes(freq, 'utf-8'))
-	else:
-		s.send(bytes(str(freq), 'utf-8'))
-
-	s.recv(1024)
-	s.send(bytes(path_app, 'utf-8'))
-	s.recv(1024)
-	s.send(bytes(path_service, 'utf-8'))
-	s.recv(1024)
-	s.send(bytes(algo_name, 'utf-8'))
-	s.recv(1024)
-	# close the connection 
+	
 	s.close()  

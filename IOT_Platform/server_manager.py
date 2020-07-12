@@ -4,24 +4,20 @@
 import sqlite3 
   
 # connect withe the myTable database 
-connection = sqlite3.connect("Server_DB.sqlite3") 
+connection = sqlite3.connect("db.sqlite3") 
   
 # cursor object 
 crsr = connection.cursor() 
 
 # SQL command to create a table in the database 
-sql_command = """CREATE TABLE Logs (  
-log_id INTEGER PRIMARY KEY,
-server_id VARCHAR(20),   
-server_ip VARCHAR(20),
-server_port INTEGER, 
+sql_command = """CREATE TABLE Notifications (  
+notify_id INTEGER PRIMARY KEY,
+username VARCHAR(20),   
+email VARCHAR(20),
+firstname INTEGER, 
+lastname VARCHAR(20),
 app_name VARCHAR(20),
 service VARCHAR(20),
-period VARCHAR(20),
-freq VARCHAR(20),
-path_app VARCHAR(20),
-path_service VARCHAR(20),
-algo_name VARCHAR(20),
 datetime VARCHAR(20));"""
   	
 # execute the statement 

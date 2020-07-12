@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sensor_manager.apps.SensorManagerConfig',
-    'apps_info.apps.AppsInfoConfig'
+    'apps_info.apps.AppsInfoConfig',
+    'action_notification.apps.ActionNotificationConfig'
     ]
 
 MIDDLEWARE = [
