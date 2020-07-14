@@ -62,13 +62,13 @@ def startAction(request_data):
 	path_service= request_data['path_service']
 	algo_name= request_data['algo_name']
 	username= request_data['username']
+	phone_number= request_data['phone_number']
 	email= request_data['email']
 	firstname= request_data['firstname']
-	lastname= request_data['lastname']
 
 	# exec(open(path+algo_name).read())
 	shutil.copyfile(path_service+algo_name, "./{}".format(algo_name))
-	command="python3 {} {} '{}' '{}' '{}' '{}' '{}' '{}'".format(algo_name, 3, app_name, service, username, email, firstname, lastname)
+	command="python3 {} {} '{}' '{}' '{}' '{}' '{}' '{}'".format(algo_name, 3, app_name, service, username, phone_number, email, firstname)
 	print("command= ", command)
 	os.system(command)
 	

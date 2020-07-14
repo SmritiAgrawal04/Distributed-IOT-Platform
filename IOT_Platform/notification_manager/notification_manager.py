@@ -16,34 +16,32 @@ while True:
     if msg.error():
         continue
     
-    print('Received message: {}'.format(msg.value().decode('utf-8')))
+    # print('Received message: {}'.format(msg.value().decode('utf-8')))
     _request_= json.loads(msg.value().decode('utf-8'))
     connection = sqlite3.connect("../db.sqlite3") 
     crsr = connection.cursor() 
     try:
-        task= (_request_['username'], _request_['email'], _request_['firstname'], _request_['lastname'], _request_['app_name'], _request_['service'], str(datetime.now()), _request_['value'], _request_['notify_type'])
-        sql_command = '''INSERT INTO action_notification_notifications (username, email, firstname, lastname, app_name, service, datetime, value, notify_type) VALUES (?,?,?,?,?,?,?,?,?)'''
+        task= (_request_['username'], _request_['phone_number'], _request_['email'], _request_['firstname'], _request_['app_name'], _request_['service'], str(datetime.now()), _request_['value'], _request_['notify_type'])
+        sql_command = '''INSERT INTO action_notification_notifications (username, phone_number, email, firstname, app_name, service, datetime, value, notify_type) VALUES (?,?,?,?,?,?,?,?,?)'''
         crsr.execute(sql_command, task)
         connection.commit()
         print ("Insertion Done")
 
         try:
             noti_types= _request_['notify_type'].split(",")
-            print ("*****", noti_types, "*****")
             if 'email' in noti_types:
                 email_notification(_request_)
-            elif 'message' in noti_types:
+            if 'message' in noti_types:
                 message_notification(_request_)
-            elif 'alarm' in noti_types:
+            if 'alarm' in noti_types:
                 alarm_notification(_request_)
             print ("Notification Sent from try")
         except:
-            print ("*****", _request_['notify_type'], "*****")
             if _request_['notify_type'] == 'email':
                 email_notification(_request_)
-            elif _request_['notify_type'] == 'message':
+            if _request_['notify_type'] == 'message':
                 message_notification(_request_)
-            elif _request_['notify_type'] == 'alarm':
+            if _request_['notify_type'] == 'alarm':
                 alarm_notification(_request_)
             print ("Notification Sent from except")
 

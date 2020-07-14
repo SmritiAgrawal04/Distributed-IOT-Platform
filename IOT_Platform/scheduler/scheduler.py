@@ -66,7 +66,7 @@ def run_loadBalancer(service, path_app):
 	print (server_id, server_ip, server_port)
 	return server_id, server_ip, server_port
 
-def run_server(app_name, service, period, freq, path_app, path_service, algo_name, username, email, firstname, lastname):
+def run_server(app_name, service, period, freq, path_app, path_service, algo_name, username, phone_number, email, firstname):
 	# Communication with Load Balancer to get appropriate server
 	server_id, server_ip, server_port= run_loadBalancer(service, path_app)
 
@@ -89,16 +89,16 @@ def run_server(app_name, service, period, freq, path_app, path_service, algo_nam
 			   'path_service' : path_service,
 			   'algo_name' : algo_name,
 			   'username' : username,
+			   'phone_number' :phone_number,
 			   'email' : email,
 			   'firstname' : firstname,
-			   'lastname' : lastname
 	}
 	request_data= json.dumps(request_data)
 	rs.send(bytes(request_data, 'utf-8'))
 	rs.recv(1024)
 
 
-def schedule_algorithm(app_name, service, period, freq, path_app, path_service, algo_name, username, email, firstname, lastname):
+def schedule_algorithm(app_name, service, period, freq, path_app, path_service, algo_name, username, phone_number, email, firstname):
 	if period== "Weekly":
 
 		if (freq == "Sunday"):
@@ -120,7 +120,7 @@ def schedule_algorithm(app_name, service, period, freq, path_app, path_service, 
 		schedule.every(freq).hour.do(run_server)
 
 	elif period== "Minutely":
-		schedule.every(freq).minutes.do(run_server, app_name, service, period, freq, path_app, path_service, algo_name, username, email, firstname, lastname)
+		schedule.every(freq).minutes.do(run_server, app_name, service, period, freq, path_app, path_service, algo_name, username, phone_number, email, firstname)
 
 	while True: 
 		schedule.run_pending() 
@@ -165,18 +165,19 @@ if __name__ == "__main__":
 		username= _request_['username']
 		print(username, type(username))
 
+		phone_number= _request_['phone_number']
+		print(phone_number, type(phone_number))
+
 		email= _request_['email']
 		print(email, type(email))
 
 		firstname= _request_['firstname']
 		print(firstname, type(firstname))
 
-		lastname= _request_['lastname']
-		print(lastname, type(lastname))
 		
 		c.close() 
 		
-		t= threading.Thread(target=schedule_algorithm, args=(app_name, service, period, freq, path_app, path_service, algo_name, username, email, firstname, lastname))
+		t= threading.Thread(target=schedule_algorithm, args=(app_name, service, period, freq, path_app, path_service, algo_name, username, phone_number, email, firstname))
 		t.start()
 
 

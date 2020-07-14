@@ -54,8 +54,9 @@
         <li><a href="#section-home" class="nav-link">Home</a></li>
         <!-- <li><a href="#section-photos" class="nav-link">Photos</a></li> -->
         <li><a href="#section-bio" class="nav-link">ALL</a></li>
+        <li><a href="#section-testimonial" class="nav-link">Service Segregation</a></li>
         <li><a href="#section-blog" class="nav-link">Time Travels</a></li>
-        <!-- <li><a href="#section-contact" class="nav-link">Contact</a></li> -->
+        
       </ul>
       <ul class="social js-clone-nav">
         <li><a href="#"><span class="icon-facebook"></span></a></li>
@@ -73,48 +74,6 @@
             <h1 class="text-white heading text-uppercase" data-aos="fade-up">Welcome</h1>
             <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="100">Welcome to the Status Gallery of your scheduled services. Check your service status in terms of services or based on the times.</p>
             <p data-aos="fade-up" data-aos-delay="100"><a href="/sensor_manager/user_profile" class="btn btn-primary btn-md smoothscroll">Go Back</a></p>
-          </div>
-        </div>
-      </section>
-
-    <div class="container-fluid">
-
-      <section class="site-section" id="section-testimonial">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-8 text-center">
-              <h2 class="heading text-uppercase text-white">Testimonial</h2>
-
-              <div class="row justify-content-center">
-                <div class="col-md-12">
-
-                  <div class="owl-carousel slide-one-item home-slider">
-
-                    <div class="testimony text-center px-md-4">
-                      <figure class="mx-auto d-inline-block">
-                        <img src="{{baseUrl}}/person_2.jpg" alt="Image" class="mx-auto img-fluid w-25 rounded-circle">
-                      </figure>
-                      <p class="text-white"><strong>Jean Smith</strong></p>
-                      <blockquote>
-                        <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur quis facilis quam optio voluptate totam placeat, doloremque. Sit repellat ipsum dolor fugit similique itaque maxime saepe ipsam. Velit, harum!&rdquo;</p>
-                      </blockquote>
-                    </div>
-
-                    <div class="testimony text-center px-md-4">
-                      <figure class="mx-auto d-inline-block">
-                        <img src="{{baseUrl}}/person_3.jpg" alt="Image" class="mx-auto img-fluid w-25 rounded-circle">
-                      </figure>
-                      <p class="text-white"><strong>Jean Smith</strong></p>
-                      <blockquote>
-                        <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur quis facilis quam optio voluptate totam placeat, doloremque. Sit repellat ipsum dolor fugit similique itaque maxime saepe ipsam. Velit, harum!&rdquo;</p>
-                      </blockquote>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -153,6 +112,54 @@
           </div>
         </div>
       </section>
+
+      <div class="container-fluid">
+
+        <section class="site-section" id="section-testimonial">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-8 text-center">
+                <h2 class="heading text-uppercase text-white">Segregated by Service</h2>
+  
+                <div class="row justify-content-center">
+                  <div class="col-md-12">
+  
+                    <div class="owl-carousel slide-one-item home-slider">
+                      {% for key, value in services.items %}
+                      <div class="testimony text-center px-md-4">
+                        <figure class="mx-auto d-inline-block">
+                          <img src="{{baseUrl}}/status_.jpg" alt="Image" class="mx-auto img-fluid w-25 rounded-circle">
+                        </figure>
+                        <p class="text-white"><strong>{{key}}</strong></p>
+                        <blockquote>
+                          <p>&ldquo;
+                            <ul class="ul-check list-unstyled success">
+                            {% for noti in value %}
+                            <li>The status of your service<font color= "pink"> {{noti.service}}</font> at <font color= "pink">{{noti.datetime}}</font> was <font color= "pink">{{noti.value}}</font>.</li>
+                            {% endfor %}
+                          </ul> 
+                          &rdquo;</p>
+                        </blockquote>
+                      </div>
+                      {% endfor %}
+                      <!-- <div class="testimony text-center px-md-4">
+                        <figure class="mx-auto d-inline-block">
+                          <img src="{{baseUrl}}/person_3.jpg" alt="Image" class="mx-auto img-fluid w-25 rounded-circle">
+                        </figure>
+                        <p class="text-white"><strong>Jean Smith</strong></p>
+                        <blockquote>
+                          <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde tenetur quis facilis quam optio voluptate totam placeat, doloremque. Sit repellat ipsum dolor fugit similique itaque maxime saepe ipsam. Velit, harum!&rdquo;</p>
+                        </blockquote>
+                      </div> -->
+  
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
       <section class="site-section" id="section-blog">
         <div class="container">

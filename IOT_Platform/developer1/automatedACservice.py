@@ -9,9 +9,9 @@ def run_actionNotify(value):
 				  'app_name' : sys.argv[2],
 				  'service' : sys.argv[3],
 				  'username' : sys.argv[4],
-				  'email' : sys.argv[5],
-				  'firstname' : sys.argv[6],
-				  'lastname' : sys.argv[7],
+				  'phone_number' : sys.argv[5],
+				  'email' : sys.argv[6],
+				  'firstname' : sys.argv[7],
 				  'value' : value
 	}
 

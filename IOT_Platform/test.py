@@ -1,21 +1,19 @@
-import smtplib, ssl
-
-port = 465  # For SSL
-smtp_server = "smtp.gmail.com"
-sender_email = "smriti.swtsmi@gmail.com"  # Enter your address
-receiver_email = "rituag2015@gmail.com"  # Enter receiver address
-password = input("Type your password and press enter: ")
-message = """\
-Subject: Hi there
-
-This message is sent from Python."""
-
-context = ssl.create_default_context()
-with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-    server.login(sender_email, password)
-    server.sendmail(sender_email, receiver_email, message)
-
-
-
-
-	
+# importing twilio 
+from twilio.rest import Client 
+  
+# Your Account Sid and Auth Token from twilio.com / console 
+account_sid = 'AC65bd55c27c4404768d9a78b1bcaa354d'
+auth_token = 'ff00702442f2e151e67c11cafe0ebb99'
+  
+client = Client(account_sid, auth_token) 
+  
+''' Change the value of 'from' with the number  
+received from Twilio and the value of 'to' 
+with the number in which you want to send message.'''
+message = client.messages.create( 
+                              from_='+13343848206', 
+                              body ='Hello bc!', 
+                              to ='8989648989'
+                          ) 
+  
+print(message.sid) 

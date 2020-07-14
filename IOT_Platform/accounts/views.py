@@ -47,7 +47,7 @@ def register(request):
      if request.method == 'POST':
           user_type= request.POST['user_type']
           first_name= request.POST['first_name']
-          last_name= request.POST['last_name']
+          phone_number= request.POST['phone_number']
           username= request.POST['username']
           password= request.POST['password']
           conf_pass= request.POST['conf_pass']
@@ -62,7 +62,7 @@ def register(request):
                     return redirect('register')
                else:
                     if(user_type== 'Developer' or user_type== 'developer'):
-                         user= User.objects.create_superuser(first_name= first_name, last_name= last_name, username=username, email=email, password=password)
+                         user= User.objects.create_superuser(first_name= first_name, last_name= phone_number, username=username, email=email, password=password)
                          uploaded_file= request.FILES["image"]
                          ext= uploaded_file.name.split('.')[1]
                          if ext in valid_ext:
@@ -76,7 +76,7 @@ def register(request):
                               return redirect('register')
 
                     elif(user_type== 'user' or user_type== 'User'):
-                         user= User.objects.create_user(first_name= first_name, last_name= last_name, username=username, email=email, password=password)
+                         user= User.objects.create_user(first_name= first_name, last_name= phone_number, username=username, email=email, password=password)
                          uploaded_file= request.FILES["image"]
                          ext= uploaded_file.name.split('.')[1]
                          if ext in valid_ext:

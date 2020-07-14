@@ -86,7 +86,7 @@ def user_schedule(request):
 			username= request.user.get_username()
 			email= request.user.email
 			firstname= request.user.first_name
-			lastname= request.user.last_name
+			phone_number= request.user.last_name
 
 			file_obj= filemap.objects.filter(app_name__exact= app_name)
 			for fo in file_obj:
@@ -109,9 +109,9 @@ def user_schedule(request):
 						'period' : period,
 						'freq' : freq,
 						'username' : username,
+						'phone_number': phone_number,
 						'email' : email,
 						'firstname' : firstname,
-						'lastname' : lastname,
 						'path_app' : path_app,
 						'path_service' : path_service,
 						'algo_name' : algo_name
