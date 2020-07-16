@@ -74,14 +74,9 @@ def user_schedule(request):
 		if user is not None:
 			app_name= request.POST['app_name']
 			service= request.POST['service']
-			period= request.POST['period']
-
-			if period== "Weekly":
-				freq= request.POST['weekly']
-			elif period== "Hourly":
-				freq= float(request.POST['hourly'])
-			elif period== "Minutely":
-				freq= float(request.POST['minutely'])
+			freq= request.POST['weekly']
+			start_time= request.POST['st']
+			end_time= request.POST['et']
 
 			username= request.user.get_username()
 			email= request.user.email
@@ -102,12 +97,11 @@ def user_schedule(request):
 			path_service= "../../Uploaded Applications/{}/".format(filename)
 			path_app= "."+path_app
 
-
-
 			_request_= { 'app_name': app_name,
 						'service' : service,
-						'period' : period,
 						'freq' : freq,
+						'start_time' : start_time,
+						'end_time': end_time,
 						'username' : username,
 						'phone_number': phone_number,
 						'email' : email,

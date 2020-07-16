@@ -1,5 +1,5 @@
 from confluent_kafka import Consumer, KafkaError, Producer
-import time, sys, json, socket
+import time, sys, json, socket, os
 
 p = Producer({'bootstrap.servers': "localhost:9092"})
 
@@ -22,14 +22,14 @@ def run_actionNotify(value):
 
 c = Consumer({'bootstrap.servers': "localhost:9092", 'group.id': sys.argv[1], 'auto.offset.reset': 'latest'})
 c.subscribe(["temp_ac"])
-
+print ("************************************in service", os.getpid(), "*******************************************")
 while True:
 	msg = c.poll(1.0)
 
 	if msg is None or msg.error():
 		continue
 
-	print ("####", sys.argv[2], sys.argv[3],sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
+	# print ("####", sys.argv[2], sys.argv[3],sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
 	value= int((msg.value()).decode('utf-8'))
-	print("****value= ", value, "******")
+	# print("****value= ", value, "******")
 	run_actionNotify(value)

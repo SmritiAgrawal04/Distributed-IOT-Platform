@@ -6,7 +6,7 @@ from message_notif import message_notification
 from alarm_notif import alarm_notification
 
 c = Consumer({'bootstrap.servers': "localhost:9092", 'group.id': '1', 'auto.offset.reset': 'latest'})
-c.subscribe(['notify_ui'])
+c.subscribe(['notify'])
 
 while True:
     msg = c.poll(1.0)

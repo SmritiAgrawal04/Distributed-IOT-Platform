@@ -8,15 +8,15 @@ def prep_logs(log):
     global log_id
     print ("logs= ",log_data)
     connection = sqlite3.connect("../Server_DB.sqlite3") 
-    crsr = connection.cursor() 
- 
+    crsr = connection.cursor()
     try:
-        task= (log_id, log['server_id'], log['server_ip'], int(log['server_port']), log['app_name'], log['service'], log['period'], log['freq'], log['path_app'], log['path_service'], log['algo_name'], str(datetime.now()))
-        sql_command= '''INSERT INTO Logs (log_id, server_id, server_ip, server_port, app_name, service, period, freq, path_app, path_service, algo_name, datetime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'''
+        task= (log_id, log['username'], log['server_id'], log['server_ip'], int(log['server_port']), log['app_name'], log['service'], log['freq'], log['start_time'], log['end_time'], log['path_app'], log['path_service'], log['algo_name'], str(datetime.now()), int(log['pid']))
+        sql_command= '''INSERT INTO Logs (log_id, username, server_id, server_ip, server_port, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, datetime, pid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'''
         crsr.execute(sql_command, task)
         connection.commit()
         log_id +=1
         print ("Insertion Done")
+        connection.close()
     except:
         print("Insertion Failed")
     

@@ -1,5 +1,5 @@
 from confluent_kafka import Producer
-import psutil, json, time, socket, threading, os, shutil
+import psutil, json, time, socket, threading, os, shutil, subprocess
 
 server_id= 'server3'
 server_port= 7004
@@ -53,11 +53,12 @@ def sendStats():
 		time.sleep(10)
 
 
-def startAction(request_data):
+def startAction(request_data, c):
 	app_name= request_data['app_name']
 	service= request_data['service']
-	period= request_data['period']
 	freq= request_data['freq']
+	start_time= request_data['start_time']
+	end_time= request_data['end_time']
 	path_app= request_data['path_app']
 	path_service= request_data['path_service']
 	algo_name= request_data['algo_name']
@@ -68,9 +69,12 @@ def startAction(request_data):
 
 	# exec(open(path+algo_name).read())
 	shutil.copyfile(path_service+algo_name, "./{}".format(algo_name))
-	command="python3 {} {} '{}' '{}' '{}' '{}' '{}' '{}'".format(algo_name, 3, app_name, service, username, phone_number, email, firstname)
-	print("command= ", command)
-	os.system(command)
+	# command="python3 {} {} '{}' '{}' '{}' '{}' '{}' '{}'".format(algo_name, 3, app_name, service, username, phone_number, email, firstname)
+	proc= subprocess.Popen(['python3', algo_name, '3', app_name, service, username, phone_number, email, firstname])
+	# print("command= ", command)
+	pid =proc.pid
+	c.send(bytes(str(pid), 'utf-8'))
+	print ("***********in server", proc.pid, "************")
 	
 
 
@@ -84,10 +88,10 @@ def runService():
 		c, addr = s.accept()
 		print ("Connection Established")
 		request_data= json.loads(c.recv(1024).decode('utf-8'))
-		c.send(bytes("ack", 'utf-8'))
+		# c.send(bytes("ack", 'utf-8'))
 
 		print ("Ready to Schedule the Algorithm")
-		t_action= threading.Thread(target=startAction, args= (request_data, ))
+		t_action= threading.Thread(target=startAction, args= (request_data, c))
 		t_action.start()
 		
 

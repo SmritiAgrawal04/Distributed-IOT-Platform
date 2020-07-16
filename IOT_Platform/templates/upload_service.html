@@ -40,15 +40,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- main -->
 <div class="w3layouts-main"> 
 	<div class="bg-layer">
-		<h1>Schedule your Service </h1>
+		<h1>Schedule your Service from {{app_name}}</h1>
 		<div class="header-main">
 			<div class="main-icon">
 				<span class="fa fa-eercast"></span>
 			</div>
 			<div class="header-left-bottom">
 				<form action="/apps_info/user_schedule" method="POST">{% csrf_token %}
+
 					<div class="icon1">
-						<input type="text" name= "app_name" value="{{app_name}}" readonly >
+						<input type= "text" name= "app_name" value="{{app_name}}" readonly> 
 					</div>
 
 					<div class="icon1">
@@ -59,34 +60,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							{% endfor %}
 						</select>
 					</div>
-					<div class="icon1">
-						<!-- <input type="radio" id="Yearly" name="period" value="Yearly">
-						<label for="Yearly">Schedule Yearly</label><br> -->
-						<!-- <input type="radio" id="Monthly" name="period" value="Monthly">
-						<label for="Monthly">Schedule Monthly</label><br> -->
-						<input type="radio" id="Weekly" name="period" value="Weekly">
-						<label for="Weekly">Schedule Weekly</label><br>
-						<!-- <input type="radio" id="Daily" name="period" value="Daily">
-						<label for="Daily">Schedule Daily</label><br> -->
-						<input type="radio" id="Hourly" name="period" value="Hourly">
-						<label for="Hourly">Schedule Hourly</label><br>
-						<input type="radio" id="Minutely" name="period" value="Minutely">
-						<label for="Minutely">Schedule Minutely</label>
-					</div>
-
-					<!-- <div class="icon1">
-						Enter # years if it is a valid option for you else type 'NA'
-						<input type="text" name= "yearly" >
-					</div> -->
-
-					<!-- <div class="icon1">
-						Enter # months if it is a valid option for you else type 'NA'
-						<input type="text" name= "monthly" >
-					</div> -->
 
 					<div class="icon1">
 						<select name="weekly">
-							<option selected>Choose your Weekday</option>
+							<option selected>Choose your Days</option>
 							<option>Sunday</option>
 							<option>Monday</option>
 							<option>Tuesday</option>
@@ -94,33 +71,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<option>Thursday</option>
 							<option>Friday</option>
 							<option>Saturday</option>
+							<option>All</option>
+							<option>Weekdays(Mon-Fri)</option>
 						</select>
-						<!-- <input type="radio" id="sun" name="week" value="sun">
-						<label for="sun">Schedule on Sunday</label><br>
-						<input type="radio" id="mon" name="week" value="mon">
-						<label for="mon">Schedule on Monday</label><br>
-						<input type="radio" id="tue" name="week" value="tue">
-						<label for="tue">Schedule on Tuesday</label><br>
-						<input type="radio" id="wed" name="week" value="wed">
-						<label for="wed">Schedule on Wednesday</label><br>
-						<input type="radio" id="thu" name="week" value="thu">
-						<label for="thu">Schedule on Thursday</label><br>
-						<input type="radio" id="fri" name="week" value="fri">
-						<label for="fri">Schedule on Friday</label><br>
-						<input type="radio" id="sat" name="week" value="sat">
-						<label for="sat">Schedule on Saturday</label><br>
-						<input type="radio" id="none" name="week" value="none">
-						<label for="none">None</label><br> -->
+						
+					</div>
+					<div class="icon1">
+						Start Time:
+						<input type="time" name= "st" >
 					</div>
 
 					<div class="icon1">
-						<input type="text" name= "hourly" placeholder="No. of Hours">
+						End Time:
+						<input type="time" name= "et" >
 					</div>
-
-					<div class="icon1">
-						<input type="text" name= "minutely" placeholder="No. of Minutes" >
-					</div>
-					
 
 					<div class="icon1">
 						<span class="fa fa-lock"></span>
