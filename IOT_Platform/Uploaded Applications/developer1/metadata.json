@@ -22,13 +22,13 @@
 	 "sensor_location": ["Building-8357"],
 	 "cpu_requirement": 0.0,
 	 "memory_requirement": 0,
-	 "dependencies" : ["pip3 install requests"]
+	 "dependencies" : ["pip3 install Pillow"]
 	 },
 
 "Classroom Scheduling Service":
 	{"algorithm_name": "classroomScheduling.py",
 	 "sensor_type": ["numeric"],
-	 "sensor_location": ["Building-8357"],
+	 "sensor_location": ["Building-0464"],
 	 "cpu_requirement": 0.0,
 	 "memory_requirement": 0,
 	 "dependencies" : ["pip3 install requests"]

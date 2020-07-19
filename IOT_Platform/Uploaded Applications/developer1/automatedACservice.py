@@ -1,18 +1,27 @@
 from confluent_kafka import Consumer, KafkaError, Producer
 import time, sys, json, socket, os
+from datetime import datetime
 
 p = Producer({'bootstrap.servers': "localhost:9092"})
 
 def run_actionNotify(value):
+	if value>=10 and value<=59:
+		message= "Your {} at {} had a LOW TEMPERATURE of {} in {}".format(sys.argv[3], str(datetime.now()), str(value), sys.argv[8])
+	elif value>=60 and value<=100:
+		message= "Your {} at {} had a NORMAL TEMPERATURE of {} in {}".format(sys.argv[3], str(datetime.now()), str(value), sys.argv[8])
+	elif value>=101 and value<+120:
+		message= "Your {} at {} had a HIGH TEMPERATURE of {} in {}".format(sys.argv[3], str(datetime.now()), str(value), sys.argv[8])
+	else:
+		return
 
-	notify_data= {'notify_type': "email",
+	notify_data= {'notify_type': "",
 				  'app_name' : sys.argv[2],
 				  'service' : sys.argv[3],
 				  'username' : sys.argv[4],
 				  'phone_number' : sys.argv[5],
 				  'email' : sys.argv[6],
 				  'firstname' : sys.argv[7],
-				  'value' : value
+				  'message' : message
 	}
 
 	notify_data= json.dumps(notify_data)

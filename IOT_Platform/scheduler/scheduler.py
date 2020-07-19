@@ -69,12 +69,29 @@ def run_loadBalancer(service, path_app):
 	print (server_id, server_ip, server_port)
 	return server_id, server_ip, server_port
 
-def run_server(app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname):
+def run_actionNotify(app_name, service, username, phone_number, email, firstname, message):
+	notify_data= {'notify_type': "email",
+				  'app_name' : app_name,
+				  'service' : service,
+				  'username' : username,
+				  'phone_number' : phone_number,
+				  'email' : email,
+				  'firstname' : firstname,
+				  'message' : message
+	}
+	notify_data= json.dumps(notify_data)
+	p.produce('notify', notify_data.encode('utf-8'))
+	p.poll(0)
+
+
+def run_server(app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location):
 	# Communication with Load Balancer to get appropriate server
 	server_id, server_ip, server_port= run_loadBalancer(service, path_app)
 
 	# Communication with Deployer to install the dependencies
 	run_deployer(service, path_app, server_id, server_ip, server_port)
+	message= "Your {} has been deployed successfuly.".format(service)
+	run_actionNotify(app_name, service, username, phone_number, email, firstname, message)
 
 	# Communication with Server to execute the service
 	rs = socket.socket()  
@@ -93,11 +110,14 @@ def run_server(app_name, service, freq, start_time, end_time, path_app, path_ser
 			   'phone_number' :phone_number,
 			   'email' : email,
 			   'firstname' : firstname,
+			   'sensor_location': sensor_location
 	}
 	request_data= json.dumps(request_data)
 	rs.send(bytes(request_data, 'utf-8'))
 	pid= rs.recv(1024).decode('utf-8')
 
+	message= "Your {} has been scheduled successfuly.".format(service)
+	run_actionNotify(app_name, service, username, phone_number, email, firstname, message)
 	# Communication with Logging to update and store logs
 	run_logging(username, server_id, server_ip, server_port, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, pid)
 
@@ -121,38 +141,38 @@ def kill_service(username, app_name, service, freq, start_time, end_time):
 	except:
 		print ("Failed to delete.")
 	
-def schedule_algorithm(app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname):
+def schedule_algorithm(app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location):
 
 	if (freq == "Sunday"):
-		schedule.every().sunday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname)
+		schedule.every().sunday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location)
 		schedule.every().sunday.at(end_time).do(kill_service, username, app_name, service, freq, start_time, end_time)
 
 	elif (freq == "Monday"):
-		schedule.every().monday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname)
+		schedule.every().monday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location)
 		schedule.every().monday.at(end_time).do(kill_service, username, app_name, service, freq, start_time, end_time)
 
 	elif (freq == "Tuesday"):
-		schedule.every().tuesday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname)
+		schedule.every().tuesday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location)
 		schedule.every().tuesday.at(end_time).do(kill_service, username, app_name, service, freq, start_time, end_time)
 
 	elif (freq == "Wednesday"):
-		schedule.every().wednesday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname)
+		schedule.every().wednesday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location)
 		schedule.every().wednesday.at(end_time).do(kill_service, username, app_name, service, freq, start_time, end_time)
 
 	elif (freq == "Thursday"):
-		schedule.every().thursday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname)
+		schedule.every().thursday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location)
 		schedule.every().thursday.at(end_time).do(kill_service, username, app_name, service, freq, start_time, end_time)
 
 	elif (freq == "Friday"):
-		schedule.every().friday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname)
+		schedule.every().friday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location)
 		schedule.every().friday.at(end_time).do(kill_service, username, app_name, service, freq, start_time, end_time)
 
 	elif (freq == "Saturday"):
-		schedule.every().saturday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname)
+		schedule.every().saturday.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location)
 		schedule.every().saturday.at(end_time).do(kill_service, username, app_name, service, freq, start_time, end_time)
 
 	elif (freq == "All"):
-		schedule.every().day.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname)
+		schedule.every().day.at(start_time).do(run_server, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location)
 		schedule.every().day.at(end_time).do(kill_service, username, app_name, service, freq, start_time, end_time)
 
 	while True: 
@@ -210,10 +230,13 @@ if __name__ == "__main__":
 		firstname= _request_['firstname']
 		# print(firstname, type(firstname))
 
+		sensor_location= _request_['sensor_location']
+		# print(sensor_location, type(sensor_location))
+
 		
 		c.close() 
 		
-		t= threading.Thread(target=schedule_algorithm, args=(app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname))
+		t= threading.Thread(target=schedule_algorithm, args=(app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location))
 		t.start()
 
 

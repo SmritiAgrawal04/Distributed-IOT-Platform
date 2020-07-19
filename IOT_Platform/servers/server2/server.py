@@ -68,11 +68,12 @@ def startAction(request_data, c):
 	phone_number= request_data['phone_number']
 	email= request_data['email']
 	firstname= request_data['firstname']
+	sensor_location= request_data['sensor_location']
 
 	# exec(open(path+algo_name).read())
 	shutil.copyfile(path_service+algo_name, "./{}".format(algo_name))
 	# command="python3 {} {} '{}' '{}' '{}' '{}' '{}' '{}'".format(algo_name, 2, app_name, service, username, phone_number, email, firstname)
-	proc= subprocess.Popen(['python3', algo_name, '2', app_name, service, username, phone_number, email, firstname])
+	proc= subprocess.Popen(['python3', algo_name, '2', app_name, service, username, phone_number, email, firstname, sensor_location])
 	# print("command= ", command)
 	pid =proc.pid
 	c.send(bytes(str(pid), 'utf-8'))

@@ -94,6 +94,7 @@ def user_schedule(request):
 				json_result= json.loads(result)
 			entry= json_result[service]
 			algo_name= entry['algorithm_name']
+			sensor_location= ['sensor_location']
 			path_service= "../../Uploaded Applications/{}/".format(filename)
 			path_app= "."+path_app
 
@@ -108,7 +109,8 @@ def user_schedule(request):
 						'firstname' : firstname,
 						'path_app' : path_app,
 						'path_service' : path_service,
-						'algo_name' : algo_name
+						'algo_name' : algo_name,
+						'sensor_location' : sensor_location
 						}
 
 			_request_= json.dumps(_request_)

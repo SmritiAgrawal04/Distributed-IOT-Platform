@@ -21,8 +21,8 @@ while True:
     connection = sqlite3.connect("../db.sqlite3") 
     crsr = connection.cursor() 
     try:
-        task= (_request_['username'], _request_['phone_number'], _request_['email'], _request_['firstname'], _request_['app_name'], _request_['service'], str(datetime.now()), _request_['value'], _request_['notify_type'])
-        sql_command = '''INSERT INTO action_notification_notifications (username, phone_number, email, firstname, app_name, service, datetime, value, notify_type) VALUES (?,?,?,?,?,?,?,?,?)'''
+        task= (_request_['username'], _request_['phone_number'], _request_['email'], _request_['firstname'], _request_['app_name'], _request_['service'], str(datetime.now()), _request_['message'], _request_['notify_type'])
+        sql_command = '''INSERT INTO action_notification_notifications (username, phone_number, email, firstname, app_name, service, datetime, message, notify_type) VALUES (?,?,?,?,?,?,?,?,?)'''
         crsr.execute(sql_command, task)
         connection.commit()
         print ("Insertion Done")

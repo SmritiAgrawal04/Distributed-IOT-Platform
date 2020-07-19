@@ -6,7 +6,6 @@ def email_notification(_request_):
 	port = 465  # For SSL
 	smtp_server = "smtp.gmail.com"
 	sender_email = "smriti.swtsmi@gmail.com"  # Enter your address
-	# print (_request_['email'], "******")
 	receiver_email = _request_['email']  # Enter receiver address
 	password = "@n$@l136"
 	message = f"""\
@@ -14,7 +13,7 @@ def email_notification(_request_):
 	To: {receiver_email}
 	Subject: "Service Notification"
 
-	Hi {_request_["firstname"]},\nThe current status of your service {_request_['service']} of {_request_['app_name']} is {_request_["value"]}."""
+	Hi {_request_["firstname"]},\n{_request_['message']}"""
 	
 	context = ssl.create_default_context()
 	with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:

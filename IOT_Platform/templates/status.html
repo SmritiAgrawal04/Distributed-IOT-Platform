@@ -88,7 +88,7 @@
                 <div class="mr-md-auto mr-2">
                   <ul class="ul-check list-unstyled success">
                     {% for noti in notification %}
-                    <li>The status of your service<font color= "pink"> {{noti.service}}</font> at <font color= "pink">{{noti.datetime}}</font> was <font color= "pink">{{noti.value}}</font>.</li>
+                    <li><font color= "pink"> {{noti.message}}</font>.</li>
                     {% endfor %}
                   </ul>
                 </div>
@@ -124,7 +124,7 @@
                           <p>&ldquo;
                             <ul class="ul-check list-unstyled success">
                             {% for noti in value %}
-                            <li>The status of your service<font color= "pink"> {{noti.service}}</font> at <font color= "pink">{{noti.datetime}}</font> was <font color= "pink">{{noti.value}}</font>.</li>
+                            <li><font color= "pink"> {{noti.message}}</font>.</li>
                             {% endfor %}
                           </ul> 
                           &rdquo;</p>
@@ -151,7 +151,7 @@
                   <div class="d-md-flex d-block blog-entry align-items-start">
                     <div class="mr-0 mr-md-5 mb-3 img-wrap"><img src="{{baseUrl}}/24.jpg" alt="Image" class="img-fluid"></div>
                     <div>
-                      <h2 class="mt-0 mb-2"><a href="single.html">How were your services in last 24 hours?</a></h2>
+                      <h2 class="mt-0 mb-2"><a href="">How were your services in last 24 hours?</a></h2>
                       <div class="meta mb-3">
                         {% if hourly %}
                         <font color= "yellow">Check your Status here..</font>
@@ -161,7 +161,7 @@
                       </div>
                       <ul class="ul-check list-unstyled success">
                         {% for noti in hourly %}
-                        <li>The status of your service<font color= "pink"> {{noti.service}}</font> at <font color= "pink">{{noti.datetime}}</font> was <font color= "pink">{{noti.value}}</font>.</li>
+                        <li><font color= "pink"> {{noti.message}}</font>.</li>
                         {% endfor %}
                       </ul> 
                     </div>
@@ -172,7 +172,7 @@
                   <div class="d-md-flex d-block blog-entry align-items-start">
                     <div class="mr-0 mr-md-5 mb-3 img-wrap"><img src="{{baseUrl}}/week.jpeg" alt="Image" class="img-fluid"></div>
                     <div>
-                      <h2 class="mt-0 mb-2"><a href="single.html">How were your services in last week?</a></h2>
+                      <h2 class="mt-0 mb-2"><a href="">How were your services in last week?</a></h2>
                       <div class="meta mb-3">
                         {% if weekly %}
                         <font color= "yellow">Check your Status here..</font>
@@ -182,7 +182,7 @@
                       </div>
                       <ul class="ul-check list-unstyled success">
                         {% for noti in weekly %}
-                        <li>The status of your service<font color= "pink"> {{noti.service}}</font> at <font color= "pink">{{noti.datetime}}</font> was <font color= "pink">{{noti.value}}</font>.</li>
+                        <li><font color= "pink"> {{noti.message}}</font>.</li>
                         {% endfor %}
                       </ul> 
                     </div>
@@ -193,17 +193,17 @@
                   <div class="d-md-flex d-block blog-entry align-items-start">
                     <div class="mr-0 mr-md-5 mb-3 img-wrap"><img src="{{baseUrl}}/month.png" alt="Image" class="img-fluid"></div>
                     <div>
-                      <h2 class="mt-0 mb-2"><a href="single.html">How were your services in last month?</a></h2>
+                      <h2 class="mt-0 mb-2"><a href="">How were your services in last month?</a></h2>
                       <div class="meta mb-3">
                         {% if monthly %}
                         <font color= "yellow">Check your Status here..</font>
                         {% else %}
-                        <font color= "yellow">No notifications for last week.</font>
+                        <font color= "yellow">No notifications for last month.</font>
                         {% endif %}
                       </div>
                       <ul class="ul-check list-unstyled success">
                         {% for noti in monthly %}
-                        <li>The status of your service<font color= "pink"> {{noti.service}}</font> at <font color= "pink">{{noti.datetime}}</font> was <font color= "pink">{{noti.value}}</font>.</li>
+                        <li><font color= "pink"> {{noti.message}}</font>.</li>
                         {% endfor %}
                       </ul> 
                     </div>
@@ -214,17 +214,17 @@
                   <div class="d-md-flex d-block blog-entry align-items-start">
                     <div class="mr-0 mr-md-5 mb-3 img-wrap"><img src="{{baseUrl}}/3months.png" alt="Image" class="img-fluid"></div>
                     <div>
-                      <h2 class="mt-0 mb-2"><a href="single.html">How were your services in last 3 months?</a></h2>
+                      <h2 class="mt-0 mb-2"><a href="">How were your services in last 3 months?</a></h2>
                       <div class="meta mb-3">
                         {% if months3 %}
                         <font color= "yellow">Check your Status here..</font>
                         {% else %}
-                        <font color= "yellow">No notifications for last week.</font>
+                        <font color= "yellow">No notifications for last 3 months.</font>
                         {% endif %}
                       </div>
                       <ul class="ul-check list-unstyled success">
                         {% for noti in months3 %}
-                        <li>The status of your service<font color= "pink"> {{noti.service}}</font> at <font color= "pink">{{noti.datetime}}</font> was <font color= "pink">{{noti.value}}</font>.</li>
+                        <li><font color= "pink"> {{noti.message}}</font>.</li>
                         {% endfor %}
                       </ul> 
                     </div>
@@ -235,17 +235,17 @@
                   <div class="d-md-flex d-block blog-entry align-items-start">
                     <div class="mr-0 mr-md-5 mb-3 img-wrap"><img src="{{baseUrl}}/6months.jpeg" alt="Image" class="img-fluid"></div>
                     <div>
-                      <h2 class="mt-0 mb-2"><a href="single.html">How were your services in last 6 months?</a></h2>
+                      <h2 class="mt-0 mb-2"><a href="">How were your services in last 6 months?</a></h2>
                       <div class="meta mb-3">
                         {% if months6 %}
                         <font color= "yellow">Check your Status here..</font>
                         {% else %}
-                        <font color= "yellow">No notifications for last week.</font>
+                        <font color= "yellow">No notifications for last 6 months.</font>
                         {% endif %}
                       </div>
                       <ul class="ul-check list-unstyled success">
                         {% for noti in months6 %}
-                        <li>The status of your service<font color= "pink"> {{noti.service}}</font> at <font color= "pink">{{noti.datetime}}</font> was <font color= "pink">{{noti.value}}</font>.</li>
+                        <li><font color= "pink"> {{noti.message}}</font>.</li>
                         {% endfor %}
                       </ul> 
                     </div>
@@ -256,17 +256,17 @@
                   <div class="d-md-flex d-block blog-entry align-items-start">
                     <div class="mr-0 mr-md-5 mb-3 img-wrap"><img src="{{baseUrl}}/year.jpeg" alt="Image" class="img-fluid"></div>
                     <div>
-                      <h2 class="mt-0 mb-2"><a href="single.html">How were your services in last year?</a></h2>
+                      <h2 class="mt-0 mb-2"><a href="">How were your services in last year?</a></h2>
                       <div class="meta mb-3">
                         {% if yearly %}
                         <font color= "yellow">Check your Status here..</font>
                         {% else %}
-                        <font color= "yellow">No notifications for last week.</font>
+                        <font color= "yellow">No notifications for last year.</font>
                         {% endif %}
                       </div>
                       <ul class="ul-check list-unstyled success">
                         {% for noti in yearly %}
-                        <li>The status of your service<font color= "pink"> {{noti.service}}</font> at <font color= "pink">{{noti.datetime}}</font> was <font color= "pink">{{noti.value}}</font>.</li>
+                        <li><font color= "pink"> {{noti.message}}</font>.</li>
                         {% endfor %}
                       </ul> 
                     </div>
