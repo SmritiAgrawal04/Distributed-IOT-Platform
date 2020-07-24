@@ -1,0 +1,20 @@
+import os
+import time
+# os.system('sudo docker run --name zookeeper  -p 2181:2181 -d zookeeper')
+# print("ZOOOOOOOOOOOOKEEEEEEEPER")
+# # time.sleep(20)
+# os.system('docker run -p 9092:9092 --name kafka  -e KAFKA_ZOOKEEPER_CONNECT=localhost:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 confluentinc/cp-kafka')
+# print ("SERVER")
+# # time.sleep(90)
+os.system('sudo bash build.sh')
+
+os.system('sudo docker-compose build')
+os.system('sudo docker-compose -f docker-compose.yml up')
+time.sleep(30)
+os.system('sudo bash run.sh')
+# os.system('sudo docker run scheduler_image')
+# os.system('sudo docker run monitoring_image')
+# os.system('sudo docker run load_balancer_image')
+# os.system('sudo docker run deployer_image')
+# os.system('sudo docker run notification_manager_image')
+# os.system('sudo docker run logging_image')
