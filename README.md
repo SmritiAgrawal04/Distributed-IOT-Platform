@@ -35,14 +35,14 @@ Clone this repo to your local machine using https://github.com/SmritiAgrawal04/I
 
 In your installed Kafka Directory, open a new terminal and start the zookeeper and server using the following commands- 
 <code>bin/zookeeper-server-start.sh config/zookeeper.properties
-bin/kafka-server-start.sh config/server.properties<code>
+bin/kafka-server-start.sh config/server.properties</code>
 
 Now in the cloned repo /IOT_Platform/ directory open a new terminal and run the command-
-<code>sh start.sh<code>
+<code>sh start.sh</code>
 Wait until a link pops up on the terminal, Ctrl+click on it to start..
 
 **Deactivate/Unplug**
 
 In the same terminal where you executed 'start' script, press Ctrl+C and run the command- 
-<code>sh stop.sh<code>
+<code>sh stop.sh</code>
 
