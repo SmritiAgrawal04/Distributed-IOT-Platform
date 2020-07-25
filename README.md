@@ -11,7 +11,8 @@ The platform consists of a Django based web framework UI; and various modules li
 ## Launch
 How to run the project?
 
-####Dependencies
+**Dependencies**
+
 Before plugging into the project make sure you have the following requirements updated: (run the command aside if not)
 apt-get -y update : execute if running any of the below.
 1) Python3: apt-get -y install python3 
@@ -24,10 +25,12 @@ apt-get -y update : execute if running any of the below.
 8) sqlite3: apt-get -y install sqlite3
 9) Confluent-Kafka: pip3 install confluent-kafka
 
-###Clone
+**Clone**
+
 Clone this repo to your local machine using https://github.com/SmritiAgrawal04/IOT-Platform.git
 
-###Activate/Plug
+**Activate/Plug**
+
 In your installed Kafka Directory, open a new terminal and start the zookeeper and server using the following commands- 
 bin/zookeeper-server-start.sh config/zookeeper.properties
 bin/kafka-server-start.sh config/server.properties
@@ -36,7 +39,8 @@ Now in the cloned repo /IOT_Platform/ directory open a new terminal and run the 
 sh start.sh
 Wait until a link pops up on the terminal, Ctrl+click on it to start..
 
-###Deactivate/Unplug
+**Deactivate/Unplug**
+
 In the same terminal where you executed 'start' script, press Ctrl+C and run the command- 
 sh stop.sh
 
