@@ -6,6 +6,7 @@ s = socket.socket()
 port = 1234              
 s.bind(('', port))         
 s.listen(5)      
+print("Load Balancer Service up and running..")
 
 def get_stats():
 	c = Consumer({'bootstrap.servers': "localhost:9092", 'group.id': '1', 'auto.offset.reset': 'latest'})
@@ -24,7 +25,7 @@ def get_stats():
 def respond_scheduler():
 	while True:
 		c, addr = s.accept() 
-		print ("Connection Successful to respond to Scheduler")
+		# print ("Connection Successful to respond to Scheduler")
 		cpu_requirement= float(c.recv(1024).decode('utf-8'))
 		c.send(bytes("ack", 'utf-8'))
 		memory_requirement= float(c.recv(1024).decode('utf-8'))

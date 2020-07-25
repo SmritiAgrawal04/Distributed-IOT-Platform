@@ -2,7 +2,7 @@ import smtplib ,ssl
 
 
 def email_notification(_request_):
-	print ("$$$$$$$$$In email Notification$$$$$$$$")
+	# print ("$$$$$$$$$In email Notification$$$$$$$$")
 	port = 465  # For SSL
 	smtp_server = "smtp.gmail.com"
 	sender_email = "smriti.swtsmi@gmail.com"  # Enter your address

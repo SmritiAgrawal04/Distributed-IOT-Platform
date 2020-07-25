@@ -1,7 +1,7 @@
 from twilio.rest import Client 
 
 def message_notification(_request_):
-    print ("$$$$$$$$In message Notification$$$$$$$$")
+    # print ("$$$$$$$$In message Notification$$$$$$$$")
     account_sid = 'XXXXXXXXXX'
     auth_token = 'XXXXXXXXXXXXXXXXXX'
     phone_number= "+91"+ _request_['phone_number']

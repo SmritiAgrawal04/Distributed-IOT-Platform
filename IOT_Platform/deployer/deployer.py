@@ -4,11 +4,11 @@ s = socket.socket()
 port = 8080                
 s.bind(('', port))         
 s.listen(5) 
-
+print("Deployer Service up and running..")
 while True: 
 
 	c, addr = s.accept()  
-	print ("Connection Successful") 
+	# print ("Connection Successful") 
 
 	server_id= c.recv(1024).decode('utf-8')
 	c.send(bytes("ack", 'utf-8'))
@@ -21,7 +21,7 @@ while True:
 	c.send(bytes("ack", 'utf-8'))
 	for num in range (0, num_depend):
 		depend= c.recv(1024).decode('utf-8')
-		print(depend, type(depend))
+		# print(depend, type(depend))
 		install = socket.socket()  
 		install.connect(('127.0.0.1', int(server_port)+1)) 
 		install.send(bytes(depend, 'utf-8'))

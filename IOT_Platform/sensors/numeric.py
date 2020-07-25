@@ -22,5 +22,5 @@ while True:
     
     p.produce("numeric", class_data.encode('utf-8'))
     p.poll(0)
-    print(class_data)
+    # print(class_data)
     time.sleep(60)

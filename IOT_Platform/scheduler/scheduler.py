@@ -1,6 +1,7 @@
 import socket, threading, schedule, json, time ,glob, os, signal, sqlite3
 from confluent_kafka import Consumer, KafkaError, Producer
 p = Producer({'bootstrap.servers': "localhost:9092"})
+print("Scheduler Service up and running..")
 
 def run_logging(username, server_id, server_ip, server_port, app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, pid):
 	log_data= {'username' : username,
@@ -31,7 +32,7 @@ def run_deployer(service, path_app, server_id, server_ip, server_port):
 		json_result= json.loads(result)
 	entry= json_result[service]
 	dependencies= entry['dependencies']
-	print (dependencies, len(dependencies))
+	# print (dependencies, len(dependencies))
 
 	dep.send(bytes(server_id, 'utf-8'))
 	dep.recv(1024)
@@ -66,7 +67,7 @@ def run_loadBalancer(service, path_app):
 	server_id= (server.split(',')[0]).split('(')[1]
 	server_ip= server.split(',')[1]
 	server_port= server.split(',')[2]
-	print (server_id, server_ip, server_port)
+	# print (server_id, server_ip, server_port)
 	return server_id, server_ip, server_port
 
 def run_actionNotify(app_name, service, username, phone_number, email, firstname, message):
@@ -123,7 +124,7 @@ def run_server(app_name, service, freq, start_time, end_time, path_app, path_ser
 
 
 def kill_service(username, app_name, service, freq, start_time, end_time):
-	connection = sqlite3.connect("../Server_DB.sqlite3") 
+	connection = sqlite3.connect("Server_DB.sqlite3") 
 	crsr = connection.cursor() 
 	try:
 		task= (username, app_name, service, freq, start_time, end_time)
@@ -131,15 +132,16 @@ def kill_service(username, app_name, service, freq, start_time, end_time):
 		crsr.execute(sql_command, task)
 		pid= crsr.fetchall()
 		os.kill(pid[0][0], signal.SIGSTOP)
-		print ("@@@@@@@@@@@@", pid[0][0], "@@@@@@@@@@@@")
+		# print ("@@@@@@@@@@@@", pid[0][0], "@@@@@@@@@@@@")
 		task= (username, app_name, service, freq, start_time, end_time)
 		sql_command= '''DELETE FROM Logs WHERE username= ? and app_name= ? and service= ? and freq= ? and start_time= ? and end_time= ? '''
 		crsr.execute(sql_command, task)
 		connection.commit()
-		print ("Deletion Successful.")
+		# print ("Deletion Successful.")
 		connection.commit()
 	except:
-		print ("Failed to delete.")
+		# print ("Failed to delete.")
+		print ("")
 	
 def schedule_algorithm(app_name, service, freq, start_time, end_time, path_app, path_service, algo_name, username, phone_number, email, firstname, sensor_location):
 

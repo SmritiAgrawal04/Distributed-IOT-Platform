@@ -54,6 +54,7 @@ def appinfo_user(request):
 		filename= fo.filename
 
 	path= "./Uploaded Applications/{}/*.json".format(filename)
+	json_result=''
 	for file in glob.glob(path):
 		f= open(file)
 		result= f.read()
@@ -94,9 +95,9 @@ def user_schedule(request):
 				json_result= json.loads(result)
 			entry= json_result[service]
 			algo_name= entry['algorithm_name']
-			sensor_location= ['sensor_location']
-			path_service= "../../Uploaded Applications/{}/".format(filename)
-			path_app= "."+path_app
+			sensor_location= entry['sensor_location']
+			path_service= "./Uploaded Applications/{}/".format(filename)
+			# path_app= path_app
 
 			_request_= { 'app_name': app_name,
 						'service' : service,

@@ -12,7 +12,7 @@ def installDependencies():
 
 	while True: 
 		c, addr = install.accept()
-		print ("Deployer Connected to Server")
+		# print ("Deployer Connected to Server")
 		depend= c.recv(1024).decode('utf-8')
 		c.send(bytes("ack", 'utf-8'))
 		os.system(depend)
@@ -69,13 +69,14 @@ def startAction(request_data, c):
 	sensor_location= request_data['sensor_location']
 
 	# exec(open(path+algo_name).read())
-	shutil.copyfile(path_service+algo_name, "./{}".format(algo_name))
+	# shutil.copyfile(path_service+algo_name, "./{}".format(algo_name))
+	filepath= path_service+algo_name
 	# command="python3 {} {} '{}' '{}' '{}' '{}' '{}' '{}'".format(algo_name, 1, app_name, service, username, phone_number, email, firstname)
-	proc= subprocess.Popen(['python3', algo_name, '1', app_name, service, username, phone_number, email, firstname, sensor_location])
+	proc= subprocess.Popen(['python3', filepath, '1', app_name, service, username, phone_number, email, firstname, sensor_location])
 	# print("command= ", command)
 	pid =proc.pid
 	c.send(bytes(str(pid), 'utf-8'))
-	print ("***********in server", proc.pid, "************")
+	# print ("***********in server", proc.pid, "************")
 	
 
 def runService():
@@ -86,11 +87,11 @@ def runService():
 
 	while True: 
 		c, addr = s.accept()
-		print ("Connection Established")
+		# print ("Connection Established")
 		request_data= json.loads(c.recv(1024).decode('utf-8'))
 		# c.send(bytes("ack", 'utf-8'))
 	
-		print ("Ready to Schedule the Algorithm")
+		# print ("Ready to Schedule the Algorithm")
 		t_action= threading.Thread(target=startAction, args= (request_data, c))
 		t_action.start()
 		

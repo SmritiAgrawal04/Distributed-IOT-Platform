@@ -18,5 +18,5 @@ while True:
     
     p.produce("temp_env", str(value).encode('utf-8'))
     p.poll(0)
-    print(value)
+    # print(value)
     time.sleep(30)
