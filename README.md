@@ -55,5 +55,14 @@ In the same terminal where you executed 'start' script, press Ctrl+C and run the
 sh stop.sh
 ```
 
+## Features of the Platform
+* Interative and Friendly User Interface
+* Easy Bootstrapping
+* Fault Tolerant
+* Modular, scalable and encapsulated
+
 ## Architecture
 ![alt text](https://github.com/SmritiAgrawal04/IOT-Platform/blob/master/IOT_Platform/static/images/Architecture.png)
+
+## Demo
+
