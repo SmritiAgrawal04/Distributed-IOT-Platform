@@ -55,9 +55,9 @@ In the same terminal where you executed 'start' script, press Ctrl+C and run the
 sh stop.sh
 ```
 
-##Architecture
+## Architecture
 <p align="center">
-  <img src="/home/smriti/Downloads/Architecture.png" width="350" title="Architecture Diagram">
+  <img src="/home/smriti/Downloads/Architecture.png" raw=true width="350" title="Architecture Diagram">
 </p>
 
 
