@@ -56,8 +56,4 @@ sh stop.sh
 ```
 
 ## Architecture
-<p align="center">
-  <img src="/home/smriti/Downloads/Architecture.png" raw=true width="350" title="Architecture Diagram">
-</p>
-
-
+![alt text](https://github.com/SmritiAgrawal04/IOT-Platform/blob/master/IOT_Platform/static/images/Architecture.png)
