@@ -29,7 +29,10 @@ apt-get -y update : execute if running any of the below.
 
 **Clone**
 
-Clone this repo to your local machine using https://github.com/SmritiAgrawal04/IOT-Platform.git
+Clone this repo to your local machine using
+```code
+git clone https://github.com/SmritiAgrawal04/IOT-Platform.git
+```
 
 **Activate/Plug**
 
@@ -51,4 +54,10 @@ In the same terminal where you executed 'start' script, press Ctrl+C and run the
 ```code
 sh stop.sh
 ```
+
+##Architecture
+<p align="center">
+  <img src="/home/smriti/Downloads/Architecture.png" width="350" title="Architecture Diagram">
+</p>
+
 
