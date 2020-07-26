@@ -1,0 +1,57 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Architecture</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="{% static 'images/style_welcome.css' %}" title="style" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="welcome">Welcome<span class="logo_colour">to IOT</span></a></h1>
+          <!-- <h2>Simple. Contemporary. Website Template.</h2> -->
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="welcome">Home</a></li>
+          <li><a href="tech">Technologies</a></li>
+          <li><a href="launch">Launch</a></li>
+          <li><a href="features">Features</a></li>
+          <li><a href="archi">Architecture</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>A Distributed IOT Platform</h3>
+        <!-- <h4>New Website Launched</h4> -->
+        <!-- <h5>October 1st, 2013</h5> -->
+        <p>A server-less IoT solution development and management platform offers core functionality for managing the entire lifecycle of IoT solution development. This project is an attempt to to build a Distributed IoT platform that enables users to write programs and algorithms that use it in various domains of automation.<br /></p>
+        <p>The platform consists of a Django based web framework UI; and various modules like- Scheduler, Load Balancer, Monitoring service, Logging service, Deployer, Action and Notification Manager, Databases, Runtime Servers.<br></p>
+        <ul>
+          <li><a href="#">DEMO</a></li>
+        </ul>
+        </form>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h2>Architecture</h2>
+        <span class="center"><img src="{{baseUrl}}/Architecture.png" width="600" height="500" alt="example graphic" /></span>
+        
+      </div>
+    </div>
+  </div>
+</body>
+</html>

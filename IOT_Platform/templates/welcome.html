@@ -1,0 +1,99 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Home</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="{% static 'images/style_welcome.css' %}" title="style" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="welcome">Welcome<span class="logo_colour">to IOT</span></a></h1>
+          <!-- <h2>Simple. Contemporary. Website Template.</h2> -->
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="welcome">Home</a></li>
+          <li><a href="tech">Technologies</a></li>
+          <li><a href="launch">Launch</a></li>
+          <li><a href="features">Features</a></li>
+          <li><a href="archi">Architecture</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>A Distributed IOT Platform</h3>
+        <!-- <h4>New Website Launched</h4> -->
+        <!-- <h5>October 1st, 2013</h5> -->
+        <p>A server-less IoT solution development and management platform offers core functionality for managing the entire lifecycle of IoT solution development. This project is an attempt to to build a Distributed IoT platform that enables users to write programs and algorithms that use it in various domains of automation.<br /></p>
+        <p>The platform consists of a Django based web framework UI; and various modules like- Scheduler, Load Balancer, Monitoring service, Logging service, Deployer, Action and Notification Manager, Databases, Runtime Servers.<br></p>
+        <ul>
+          <li><a href="#">DEMO</a></li>
+        </ul>
+        </form>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <p>A BRIEF DESCRIPTION OF THE PLATFORM SERVICES:</p>
+        <h1>Account Manager</h1>
+        <p>
+          The accounts module of my platform allows a user to register/login. When an already registered user logs in, she is directed to either her app developer profile or app user profile as per her role. Logging out of the profile is also managed by Accounts only.
+          On the app developer profile lies all the sensor information sorted based on the both location and its type, the developer can conveniently choose her requirements to build her application. Finally, she can upload her developed app consisting of the services.
+          On the app user profile lies a list of all the applications uploaded to my platform and the user can see all descriptions given by the uploader about the app and its services and schedule required services.
+        </p>
+        
+        <h1>Request Manager</h1>
+        <p>All the requests from the app user made on the User Interface are managed by Request Manager. It processes each request and serves it.</p>
+
+        <h1>Scheduler</h1>
+        <p>This services makes sure that timely scheduling of the user requests happen.</p>
+
+        <h1>Monitoring Module</h1>
+        <p>The Monitoring Module is responsible to collect the current system stats from all Runtime Servers and pass them all to the Load Balancer.</p>
+
+        <h1>Load Balancer</h1>
+        <p>To have a balance in the system such that it isn’t only one server that runs all the user services at all times but the load is distributed, load balancing is indispensable. Under this service, I’ve looked into the requirements of the service as mentioned by the app dev and compared them to the stats of all the servers. Finally, fetched the server which is closest to the need of the service and returned the server details to the scheduler.</p>
+
+        <h1>Deployer</h1>
+        <p>On having received the details on which the service will run, it's the responsibility of the deployer to make it ready with all the dependencies installed to avoid any error when the service executes.</p>
+
+        <h1>Logging Module</h1>
+        <p>The Logging Module maintains a log of every user request that is being scheduled to be fault tolerant to any failures. It keeps the information like- application name, service name, user details, scheduling type and time, runtime server details etc. in a structured database.
+        </p>
+
+        <h1>Sensor Manager</h1>
+        <p>It manages all sensor information and communicates with them to collect sensor readings.</p>
+
+        <h1>Sensors</h1>
+        <p>These are dummy files representing sensors and producing the data on sensor manager topics.
+        </p>
+
+        <h1>Runtime Servers</h1>
+        <p>These are the systems which actually execute the service after receiving all the service details.
+        </p>
+
+        <h1>Action & Notification Service</h1>
+        <p>Its responsibility is to notify the user for the actions happening in her scheduled service via messages,emails or alarm as the urgency of the service is designed.
+        </p>
+
+        <h1>Health Checkup Module</h1>
+        <p>It keeps a check on the services/modules and the runtime services if they are up and running. 
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

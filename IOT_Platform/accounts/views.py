@@ -9,6 +9,21 @@ from django.apps import apps
 def home(request):
      return (render(request, "index.html"))
 
+def welcome(request):
+     return render(request, "welcome.html")
+
+def tech(request):
+     return render(request, "tech.html")
+
+def launch(request):
+     return render(request, "launch.html")
+
+def features(request):
+     return render(request, "features.html")
+
+def archi(request):
+     return render(request, "archi.html")
+
 def login(request):
      if request.method== "POST":
           user_type= request.POST['user_type']

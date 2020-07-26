@@ -11,7 +11,7 @@ def email_notification(_request_):
 	message = f"""\
 	From: {sender_email}
 	To: {receiver_email}
-	Subject: "Service Notification"
+	Subject: Service Notification
 
 	Hi {_request_["firstname"]},\n{_request_['message']}"""
 	

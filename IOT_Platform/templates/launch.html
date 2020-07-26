@@ -1,0 +1,89 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Launch</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="{% static 'images/style_welcome.css' %}" title="style" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="welcome">Welcome<span class="logo_colour">to IOT</span></a></h1>
+          <!-- <h2>Simple. Contemporary. Website Template.</h2> -->
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="welcome">Home</a></li>
+          <li><a href="tech">Technologies</a></li>
+          <li><a href="launch">Launch</a></li>
+          <li><a href="features">Features</a></li>
+          <li><a href="archi">Architecture</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>A Distributed IOT Platform</h3>
+        <!-- <h4>New Website Launched</h4> -->
+        <!-- <h5>October 1st, 2013</h5> -->
+        <p>A server-less IoT solution development and management platform offers core functionality for managing the entire lifecycle of IoT solution development. This project is an attempt to to build a Distributed IoT platform that enables users to write programs and algorithms that use it in various domains of automation.<br /></p>
+        <p>The platform consists of a Django based web framework UI; and various modules like- Scheduler, Load Balancer, Monitoring service, Logging service, Deployer, Action and Notification Manager, Databases, Runtime Servers.<br></p>
+        <ul>
+          <li><a href="#">DEMO</a></li>
+        </ul>
+        </form>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>How to run the project?</h1>  
+        <h2>Dependencies</h2>
+        <p>Before plugging into the project make sure you have the following requirements updated: (run the command aside if not)</p>
+        <p>apt-get -y update : execute if running any of the below.<br></p>
+        <table style="width:100%; border-spacing:0;">
+          <tr><th>Dependency</th><th>Installation Command</th></tr>
+          <tr><td>Python3</td><td>apt-get -y install python3</td></tr>
+          <tr><td>Python pip</td><td>apt-get -y install python3-pip </td></tr>
+          <tr><td>psutil</td><td>pip3 install psutil</td></tr>
+          <tr><td>schedule</td><td>pip3 install schedule</td></tr>
+          <tr><td>datetime</td><td>pip3 install DateTime</td></tr>
+          <tr><td>twilio</td><td>pip3 install twilio</td></tr>
+          <tr><td>glob3</td><td>pip3 install glob3</td></tr>
+          <tr><td>sqlite3</td><td>apt-get -y install sqlite3</td></tr>
+          <tr><td>Confluent-Kafka</td><td>pip3 install confluent-kafka</td></tr>
+        </table>
+
+        <h2>Clone</h2>
+        <p>Clone this repo to your local machine using the command:<br>"git clone https://github.com/SmritiAgrawal04/IOT-Platform.git"</p>
+        
+
+        <h2>Activate/Plug</h2>
+        <p>In your installed Kafka Directory, open a new terminal and start the zookeeper and server using the following commands-</p>
+        <ul>
+          <li>bin/zookeeper-server-start.sh config/zookeeper.properties</li>
+          <li>bin/kafka-server-start.sh config/server.properties</li>
+        </ul>
+        <p>Now in the cloned repo /IOT_Platform/ directory open a new terminal and run the command-</p>
+        <ul><li>sh start.sh</li></ul>
+        <p>Wait until a link pops up on the terminal, Ctrl+click on it to start..</p>
+
+        <h2>Deactivate/Unplug</h2>
+        <p>In the same terminal where you executed 'start' script, press Ctrl+C and run the command-</p>
+        <ul><li>sh stop.sh</li></ul>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
