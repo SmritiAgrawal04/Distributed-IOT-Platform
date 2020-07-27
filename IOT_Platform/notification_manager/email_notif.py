@@ -5,9 +5,9 @@ def email_notification(_request_):
 	# print ("$$$$$$$$$In email Notification$$$$$$$$")
 	port = 465  # For SSL
 	smtp_server = "smtp.gmail.com"
-	sender_email = "smriti.swtsmi@gmail.com"  # Enter your address
+	sender_email = "xyz.abc@gmail.com"  # Enter your address
 	receiver_email = _request_['email']  # Enter receiver address
-	password = "@n$@l136"
+	password = "XXXX"
 	message = f"""\
 	From: {sender_email}
 	To: {receiver_email}
